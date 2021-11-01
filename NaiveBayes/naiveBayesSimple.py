@@ -29,3 +29,17 @@ in_time_dict = dict(in_time)
 too_late_dict = dict(too_late)
 
 # create a function to give us the chance (Probability) of catching the train
+def catchTrain(min):
+    # number of time with this much (min) latency you catch the train
+    s = in_time_dict.get(min, 0)
+    if s == 0:
+        return 0
+    else:
+        # number of times this with much (min) latency you miss the train
+        m = too_late_dict.get(min, 0)
+        catching_chance = s/(s+m)
+        return catching_chance
+
+for min in range(-1, 13):
+    catchP = catchTrain(min)
+    print(f'the chance of getting the train is: {catchP}')
