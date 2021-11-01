@@ -48,10 +48,14 @@ class Feature:
 
 
 fts = {}
-for gender in genders:
+for gender in genderes:
     fts[gender] = Feature(heights[gender], name=gender, bin_width=5)
     print(gender, fts[gender].freq_dict)
 
+plt.bar(fts['male'].freq_dict.keys(), fts['male'].freq_dict.values(), alpha=0.5, width=2, color='red', label='male')
+plt.bar(fts['female'].freq_dict.keys(), fts['female'].freq_dict.values(), alpha=0.5, width=2, color='blue', label='female')
+plt.legend()
+plt.show()
 
 
 
@@ -68,9 +72,10 @@ for gender in genders:
 
 
 
-def main():
-    pass
 
 
-if __name__ == '__main__':
-    main()
+
+
+#
+# if __name__ == '__main__':
+#     main()
