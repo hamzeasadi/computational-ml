@@ -8,7 +8,7 @@ genderes = ['male', 'female']
 persons = []
 
 # datasets include the name, last name, height, and gender of some people.
-with open('person_data.txt') as f:
+with open('../data/person_data.txt') as f:
     for line in f:
         persons.append(line.strip().split())
 firstNames = {}
