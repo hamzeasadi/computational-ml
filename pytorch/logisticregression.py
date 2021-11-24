@@ -19,6 +19,9 @@ test_dataset = torchvision.datasets.MNIST(root='data/', train=False, download=Tr
 train_dl = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
 test_dl = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=batch_size)
 # create a logistic model
+model_name = 'logisticModel.ckpt'
+data_path = os.path.join(os.getcwd(), 'data')
+model_path = os.path.join(data_path, model_name)
 model = nn.Linear(in_features=input_size, out_features=num_classes)
 # define loss function
 criterion = nn.CrossEntropyLoss()
@@ -35,12 +38,14 @@ def train(dataLoader, model, epochs):
             opt.zero_grad()
             loss.backward()
             opt.step()
-            if epoch%2==0:
-                print(f"epoch={epoch}, loss={loss.item()}")
-                print(f"weights={model.weight}, bias={model.bias}")
-                print(f"w.grad={model.weight.grad}, bias.grad={model.bias.grad}")
 
-    torch.save(model.state_dict(), 'logisticModel.ckpt')
+        print(f"epoch={epoch}, loss={loss.item()}")
+        print(f"weights={model.weight}, bias={model.bias}")
+        print(f"w.grad={model.weight.grad}, bias.grad={model.bias.grad}")
+
+    torch.save(model.state_dict(), model_path)
+
+train(dataLoader=train_dl, model=model, epochs=num_epochs)
 
 
 
