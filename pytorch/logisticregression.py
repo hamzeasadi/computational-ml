@@ -31,7 +31,15 @@ def train(dataLoader, model, epochs):
         for i, (image, label) in enumerate(dataLoader):
             img = image.reshape(-1, input_size)
             y_pre = model(img)
-            
+            loss = criterion(y_pre, label)
+            opt.zero_grad()
+            loss.backward()
+            opt.step()
+            if epoch%2==0:
+                print(f"epoch={epoch}, loss={loss.item()}")
+                print(f"weights={model.weight}, bias={model.bias}")
+                print(f"w.grad={model.weight.grad}, bias.grad={model.bias.grad}")
+                
 
 
 
