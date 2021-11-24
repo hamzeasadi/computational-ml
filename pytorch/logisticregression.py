@@ -48,6 +48,8 @@ def train(dataLoader, model, epochs):
 # train(dataLoader=train_dl, model=model, epochs=num_epochs)
 
 with torch.no_grad():
+    # model_dict = torch.load_state_dict(model_path)
+    model.load_state_dict(model_path)
     num_batchs = len(test_dl)
     correct = 0.0
     total = 0.0
@@ -55,7 +57,8 @@ with torch.no_grad():
         img = image.reshape(-1, input_size)
         y_pre = model(img)
         loss = criterion(y_pre, label)
-        print(y_pre.shape)
+        predicted = torch.argmax(y_pre, dim=1)
+        print(predicted)
 
 
 
