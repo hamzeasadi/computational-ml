@@ -20,6 +20,9 @@ y_train = np.array([[1.7], [2.76], [2.09], [3.19], [1.694], [1.573],
                     [3.366], [2.596], [2.53], [1.221], [2.827],
                     [3.465], [1.65], [2.904], [1.3]], dtype=np.float32)
 
+# define model
+linear = nn.Linear(in_features=1, out_features=1)
+
 
 
 
