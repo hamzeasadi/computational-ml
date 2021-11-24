@@ -47,6 +47,8 @@ from torchvision.transforms import transforms
 cifar = torchvision.datasets.CIFAR10(root='data/', transform=transforms.ToTensor(), train=True, download=True)
 instance_0, lable_0 = cifar[0]
 print(f"x: {instance_0.size()}, label: {lable_0}")
+train_loader = torch.utils.DataLoader(dataset=cifar, batch_size=64, shuffle=True)
+
 
 
 
