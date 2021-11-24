@@ -18,8 +18,12 @@ test_dataset = torchvision.datasets.MNIST(root='data/', train=False, download=Tr
 
 train_dl = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
 test_dl = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=batch_size)
+# create a logistic model
 model = nn.Linear(in_features=input_size, out_features=num_classes)
-
+# define loss function
+criterion = nn.CrossEntropyLoss()
+# define optimizer
+opt = torch.optim.SGD(params=model.parameters(), lr=learning_rate)
 
 # CrossEntropyLoss
 
