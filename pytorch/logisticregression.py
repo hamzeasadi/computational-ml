@@ -49,7 +49,7 @@ def train(dataLoader, model, epochs):
 
 with torch.no_grad():
     # model_dict = torch.load_state_dict(model_path)
-    model.load_state_dict(model_path)
+    model.load_state_dict(torch.load(model_path))
     num_batchs = len(test_dl)
     correct = 0.0
     total = 0.0
@@ -58,7 +58,9 @@ with torch.no_grad():
         y_pre = model(img)
         loss = criterion(y_pre, label)
         predicted = torch.argmax(y_pre, dim=1)
-        print(predicted)
+        print(f"predicted= {predicted}")
+        print(f"trueValue = {label.numpy()}")
+
 
 
 
