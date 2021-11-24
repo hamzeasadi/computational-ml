@@ -39,7 +39,8 @@ def train(dataLoader, model, epochs):
                 print(f"epoch={epoch}, loss={loss.item()}")
                 print(f"weights={model.weight}, bias={model.bias}")
                 print(f"w.grad={model.weight.grad}, bias.grad={model.bias.grad}")
-                
+
+    torch.save(model.state_dict(), 'logisticModel.ckpt')
 
 
 
