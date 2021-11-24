@@ -22,6 +22,10 @@ y_train = np.array([[1.7], [2.76], [2.09], [3.19], [1.694], [1.573],
 
 # define model
 linear = nn.Linear(in_features=1, out_features=1)
+criterion = nn.MSELoss()
+opt = torch.optim.SGD(linear.parameters(), lr=learning_rate)
+# for epoch in range(epochs):
+
 
 
 
