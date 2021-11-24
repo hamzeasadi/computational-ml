@@ -44,6 +44,10 @@ from torchvision.transforms import transforms
 #     print(f"bias: {linear.bias.numpy()}")
 
 
+cifar = torchvision.datasets.CIFAR10(root='data/', transform=transforms.ToTensor(), train=True, download=True)
+instance_0, lable_0 = cifar[0]
+print(f"x: {instance_0.size()}, label: {lable_0}")
+
 
 
 
