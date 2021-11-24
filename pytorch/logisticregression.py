@@ -6,9 +6,18 @@ from torchvision.transforms import transforms
 import os
 from torch import nn as nn
 
+# Hyper-parameters
+input_size = 28 * 28    # 784
+num_classes = 10
+num_epochs = 5
+batch_size = 100
+learning_rate = 0.001
+
 train_dataset = torchvision.datasets.MNIST(root='data/', transform=transforms.ToTensor(), train=True, download=True)
 test_dataset = torchvision.datasets.MNIST(root='data/', train=False, download=True, transform=transforms.ToTensor())
 
+# train_dl = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
+# CrossEntropyLoss
 
 
 
