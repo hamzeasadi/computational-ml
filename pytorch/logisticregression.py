@@ -25,7 +25,14 @@ criterion = nn.CrossEntropyLoss()
 # define optimizer
 opt = torch.optim.SGD(params=model.parameters(), lr=learning_rate)
 
-# CrossEntropyLoss
+def train(dataLoader, model, epochs):
+    num_batchs = len(dataLoader)
+    for epoch in range(epochs):
+        for i, (image, label) in enumerate(dataLoader):
+            img = image.reshape(-1, input_size)
+            y_pre = model(img)
+            
+
 
 
 
