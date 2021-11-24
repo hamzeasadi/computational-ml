@@ -45,8 +45,17 @@ def train(dataLoader, model, epochs):
 
     torch.save(model.state_dict(), model_path)
 
-train(dataLoader=train_dl, model=model, epochs=num_epochs)
+# train(dataLoader=train_dl, model=model, epochs=num_epochs)
 
+with torch.no_grad():
+    num_batchs = len(test_dl)
+    correct = 0.0
+    total = 0.0
+    for i, (image, label) in enumerate(test_dl):
+        img = image.reshape(-1, input_size)
+        y_pre = model(img)
+        loss = criterion(y_pre, label)
+        print(y_pre.shape)
 
 
 
