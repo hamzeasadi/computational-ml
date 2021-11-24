@@ -58,8 +58,9 @@ with torch.no_grad():
         y_pre = model(img)
         loss = criterion(y_pre, label)
         predicted = torch.argmax(y_pre, dim=1)
-        print(f"predicted= {predicted}")
-        print(f"trueValue = {label.numpy()}")
+        correct += np.sum(predicted==label.numpy())
+        total += len(label.numpy())
+    print(f"total correct percentage={correct/total}")
 
 
 
