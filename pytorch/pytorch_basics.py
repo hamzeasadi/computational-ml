@@ -7,10 +7,10 @@ from torchvision.transforms import transforms
 import os
 import subprocess
 
-git_message = input("Please enter your message for git commit:")
-git_dir = '/Users/hamzeasadi/python/computationalML/computational-ml'
-if git_message:
-    subprocess.run(['mgit', git_message], cwd=git_dir)
+# git_message = input("Please enter your message for git commit:")
+# git_dir = '/Users/hamzeasadi/python/computationalML/computational-ml/'
+# if git_message:
+#     subprocess.run(['mgit', git_message], cwd=git_dir)
 
 # # basic autograd
 # x = torch.tensor(np.random.randn(1), dtype=torch.float32)
@@ -57,8 +57,8 @@ train_loader = torch.utils.data.DataLoader(dataset=cifar, batch_size=64, shuffle
 
 # make our data iterator
 data_iter = iter(train_loader)
-print(data_iter.next())
-
+mini_batch_images, mini_batch_labels = data_iter.next()
+print(f"mini_batch_images: {mini_batch_images.size()}, mini_batch_labels: {mini_batch_labels.size()}")
 
 
 
