@@ -16,7 +16,8 @@ learning_rate = 0.001
 train_dataset = torchvision.datasets.MNIST(root='data/', transform=transforms.ToTensor(), train=True, download=True)
 test_dataset = torchvision.datasets.MNIST(root='data/', train=False, download=True, transform=transforms.ToTensor())
 
-# train_dl = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
+train_dl = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
+test_dl = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=batch_size)
 # CrossEntropyLoss
 
 
