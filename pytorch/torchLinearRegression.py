@@ -7,8 +7,23 @@ from torch import nn as nn
 
 
 
+input_size = 1
+output_size = 1
+num_epochs = 60
+learning_rate = 0.001
 
-git_message = input("Please enter your message for git commit:")
-git_dir = '/Users/hamzeasadi/python/computationalML/computational-ml/'
-if git_message:
-    subprocess.run(['mgit ', git_message], cwd=git_dir)
+
+
+
+
+
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    pass
