@@ -4,7 +4,8 @@ import torch
 from torch import nn as nn
 import torchvision
 from torchvision.transforms import transforms
-
+import os
+import subprocess
 
 # # basic autograd
 # x = torch.tensor(np.random.randn(1), dtype=torch.float32)
@@ -47,8 +48,8 @@ from torchvision.transforms import transforms
 cifar = torchvision.datasets.CIFAR10(root='data/', transform=transforms.ToTensor(), train=True, download=True)
 instance_0, lable_0 = cifar[0]
 print(f"x: {instance_0.size()}, label: {lable_0}")
-train_loader = torch.utils.DataLoader(dataset=cifar, batch_size=64, shuffle=True)
-
+train_loader = torch.utils.data.DataLoader(dataset=cifar, batch_size=64, shuffle=True)
+os.system("")
 
 
 
