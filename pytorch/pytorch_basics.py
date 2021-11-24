@@ -62,6 +62,5 @@ print(f"mini_batch_images: {mini_batch_images.size()}, mini_batch_labels: {mini_
 
 
 
-
 if __name__ == '__main__':
     pass
