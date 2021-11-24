@@ -22,19 +22,21 @@ y_train = np.array([[1.7], [2.76], [2.09], [3.19], [1.694], [1.573],
 
 # define model
 linear = nn.Linear(in_features=1, out_features=1)
+transform = transforms.ToTensor()
 # define the optimizer and loss function
 criterion = nn.MSELoss()
 opt = torch.optim.SGD(linear.parameters(), lr=learning_rate)
-for epoch in range(epochs):
-    y_pre = linear(transforms.ToTensor(x))
-    loss = criterion(y_pre, transforms.ToTensor(y))
+for epoch in range(num_epochs):
+    y_pre = linear(transform(x_train))
+    loss = criterion(y_pre, transform(y_train))
     opt.zero_grad()
     loss.backward()
     opt.step()
     if epoch%10 == 0:
         print(f"epoch={epoch}, loss={loss.item()}")
-        print("weight.grad={linear.weight.grad}, bias.grad={linear.bias.grad}")
-        print('weight={linear.weight}, bias={linear.bias}')
+        print(f'weight.grad={linear.weight.grad}, bias.grad={linear.bias.grad}')
+        print(f'weight={linear.weight}, bias={linear.bias}')
+
 
 
 
