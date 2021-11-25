@@ -21,7 +21,10 @@ test_dataset = torchvision.datasets.MNIST(root='data/', train=False, download=Tr
                                             transform=transforms.ToTensor())
 
 # wraps datasets in a dataloader
-train_dl = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=...)                                                                                 #
+train_dl = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
+test_dl = torch.utils.data.DataLoader(dataset=test_dataset, shuffle=True, batch_size=batch_size)
+
+                                                                                 #
 
 
 
