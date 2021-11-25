@@ -57,12 +57,28 @@ class CNNmodel(nn.Module):
         return out
 
 model = CNNmodel(in_shape=(28, 28), num_classes=num_classes).to(device)
+model_path = os.path.join(os.getcwd(), 'data', 'cnnModel.ckpt')
 
 # define model loss and optimizer
 criterion = nn.CrossEntropyLoss()
 opt = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
 
+# define and create train function for training the model
+def train(data, model, epochs):
 
+    for epoch in range(epochs):
+        loss=0.0
+        for i, (image, label) in enumerate(data):
+            y_pre = model(image)
+            loss = criterion(y_pre, label)
+            opt.zero_gard()
+            loss.backward()
+            opt.step()
+
+        print(f"epoch={epoch+1}, loss={loss.item()}")
+
+    torch.save(model.state_dict(), model_path)
+    
 
 
 
