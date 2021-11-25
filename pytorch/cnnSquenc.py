@@ -37,7 +37,7 @@ class CnnModel(nn.Module):
         nn.Conv2d(in_channels=1, out_channels=16, stride=1, padding=2, kernel_size=5),
         nn.BatchNorm2d(num_features=16),
         nn.ReLU(),
-        nn.MaxPool2d(kernel_size=4, stride=2)
+        nn.MaxPool2d(kernel_size=(2, 2), stride=2)
         )
         self.layer2 = nn.Sequential(
         nn.Conv2d(in_channels=16, out_channels=32, kernel_size=5, stride=1, padding=2),
@@ -45,11 +45,13 @@ class CnnModel(nn.Module):
         nn.ReLU(),
         nn.MaxPool2d(kernel_size=(2, 2), stride=2)
         )
+        self.flatten = nn.Flatten()
         self.fc = nn.Linear(in_features=7*7*32, out_features=num_classes)
 
     def forward(self, x):
         x = self.layer1(x)
         x = self.layer2(x)
+        x = self.flatten(x)
         out = self.fc(x)
         return out
 
@@ -76,8 +78,18 @@ def train(data, model, epochs):
 
     torch.save(model.state_dict(), model_path)
 
+# train(data=train_dl, model=model, epochs=num_epochs)
 
+# load the trained model
+newmodel = CnnModel(num_classes=num_classes)
+newmodel.load_state_dict(torch.load(model_path))
 
+#  twrite the test code
+with torch.no_grad():
+    correct = 0.0
+    total = 0.0
+    for i, (images, labels) in enumerate(test_dl):
+        y_pre = model(images)
 
 
 
