@@ -32,14 +32,15 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 class CNNmodel(nn.Module):
     """This is a simple cnn model"""
     def __init__(self, in_shape, num_classes):
-        self.cnn1 = nn.Conv2(in_channels=1, out_channels=16, kernel_size=5, stride-1, padding=2)
+        super(CNNmodel, self).__init__()
+        self.cnn1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=5, stride=1, padding=2)
         self.relu = nn.ReLU()
         self.bn1 = nn.BatchNorm2d(num_features=16)
         self.bn2 = nn.BatchNorm2d(num_features=32)
         self.maxPool = nn.MaxPool2d(kernel_size=2, stride=2)
         self.cnn2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=5, stride=1, padding=2)
         self.fc = nn.Linear(in_features=7*7*32, out_features=num_classes)
-        self.flatten = nn.flatten()
+        self.flatten = nn.Flatten()
 
     def forward(self, x):
         x = self.cnn1(x)
@@ -54,7 +55,13 @@ class CNNmodel(nn.Module):
         x = self.flatten(x)
         out = self.fc(x)
         return out
-        
+
+model = CNNmodel(in_shape=(28, 28), num_classes=num_classes).to(device)
+
+# define model loss and optimizer
+criterion = nn.CrossEntropyLoss()
+opt = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
+
 
 
 
