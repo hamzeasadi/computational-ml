@@ -24,7 +24,15 @@ test_dataset = torchvision.datasets.MNIST(root='data/', train=False, download=Tr
 train_dl = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
 test_dl = torch.utils.data.DataLoader(dataset=test_dataset, shuffle=True, batch_size=batch_size)
 
-                                                                                 #
+# device
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+
+# create an CNN model
+# [batch_size, input_channels, input_height, input_width]
+class CNNmodel(nn.Module):
+    """This is a simple cnn model"""
+    def __init__(self, in_shape, num_classes):
+        self.cnn1 = nn.Conv2(in_features)
 
 
 
