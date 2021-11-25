@@ -42,7 +42,7 @@ class Net(nn.Module):
 model = Net(input_size=input_size, hidden_size=hidden_size, num_classes=num_classes)
 
 # model criterion and optimizer
-criterion = nn.MSELoss()
+criterion = nn.CrossEntropyLoss()
 opt = torch.optim.SGD(params=model.parameters(), lr=learning_rate)
 
 # define a train function
@@ -55,7 +55,6 @@ def train(data, model, epochs):
         for i, (image, label) in enumerate(data):
             img = image.reshape(-1, model.fc1.in_features)
             y_pre = model(img)
-            y_pre_maxes = torch.argmax(y_pre, dim=1)
             loss = criterion(y_pre, label)
             train_loss.append(loss.item())
             opt.zero_grad()
@@ -63,13 +62,28 @@ def train(data, model, epochs):
             opt.step()
 
         print(f"epoch={epoch}, loss={loss.item()}")
-        print(f"fc2={model.fc2}, fc2.grad={model.fc2.grad}")
+        # print(f"fc2={model.weight}, fc2.grad={model.weight.grad}")
 
-    model.save(model.state_dict(), model_path)
+    torch.save(model.state_dict(), model_path)
     plt.plot(np.arange(len(train_loss)), train_loss)
 
 
-train(data=train_dl, model=model, epochs=num_epochs)
+
+# train(data=train_dl, model=model, epochs=num_epochs)
+
+# define a test function
+def test(data, model):
+    correct = 0.0
+    total = 0.0
+    with torch.no_grad():
+        for i, (image, label) in enumerate(data):
+            img = image.reshape(-1, model.fc1.in_features)
+            pre = model(img)
+            loss = criterion(y_pre, label)
+            y_pre_maxes = torch.argmax(y_pre, dim=1)
+            correct += (y_pre_maxes == label).sum()
+            total += len(label)
+            print(f"batch={i+1}, loss={loss.item()}, accuracy={correct/total}")
 
 
 
