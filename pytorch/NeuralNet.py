@@ -85,7 +85,9 @@ def test(data, model):
             total += len(label)
             print(f"batch={i+1}, loss={loss.item()}, accuracy={correct/total}")
 
-
+mymodel = Net()
+mymodel.load_state_dict(torch.load(model_path))
+test(data=test_dl,model=mymodel)
 
 
 
