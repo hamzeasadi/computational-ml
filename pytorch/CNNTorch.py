@@ -87,6 +87,17 @@ def train(data, model, epochs):
 newmodel = CNNmodel(in_shape=(28, 28), num_classes=num_classes)
 newmodel.load_state_dict(torch.load(model_path))
 
+with torch.no_grad():
+    loss = 0.00
+    correct = 0.0
+    total = 0.0
+    for i, (image, label) in enumerate(test_dl):
+        y_pre = model(image)
+        y_max_pre = torch.argmax(y_pre, dim=1)
+        correct += (y_max_pre == label).sum()
+        total += len(label)
+        if i%10 == 0:
+            print(f"batch={i}, accuracy={correct/total}")
 
 
 
