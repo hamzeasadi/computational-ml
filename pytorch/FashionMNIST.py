@@ -69,10 +69,11 @@ class FashionMNISTBase(nn.Module):
 
 
 
-model = FashionMNISTBase(input_shape=input_shape, num_classes=num_classes)
+model = FashionMNISTBase(input_shape=input_shape, num_classes=num_classes).to(device)
 
-# print(model)
-
+# set the model loss and optimizer
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
 
 define and implement a train function
 def train(data, model, epochs):
@@ -82,6 +83,8 @@ def train(data, model, epochs):
         for i, (images, labels) in enumerate(data):
             y_pre = model(images)
             loss = criterion(y_pre, labels)
+            opt.
+
 
 
 
