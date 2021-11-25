@@ -7,6 +7,9 @@ import torchvision
 from torch import nn as nn
 from torchvision.transforms import transforms
 
+# device configuration
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+
 
 
 
