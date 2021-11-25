@@ -13,6 +13,13 @@ num_epochs = 1
 learning_rate = 1e-3
 batch_size = 100
 
+# load dataset
+train_dataset = torchvision.datasets.FashionMNIST(root='data/', train=True, download=True,
+                                                 transform=transforms.ToTensor())
+test_dataset = torchvision.datasets.FashionMNIST(root='data/', train=False, download=True,
+                                                transform=transforms.ToTensor())
+                                                                                                 
+
 # model setting
 """
 [(convolution layer1 filters, convolution layer1 kernel size),
@@ -50,7 +57,9 @@ class FashionMNISTBase(nn.Module):
         out = self.fc(x)
         return out
 
-
+# define and implement a train function
+def train(data, model, epochs):
+    pass
 
 
 
