@@ -90,13 +90,14 @@ with torch.no_grad():
     total = 0.0
     for i, (images, labels) in enumerate(test_dl):
         y_pre = model(images)
-        y_max_pre = torch.argmax(y_pre, dim=1)
+        # y_max_pre = torch.argmax(y_pre, dim=1)
+        _, y_max_pre = torch.max(y_pre.data, 1)
         correct += (y_max_pre == labels).sum()
         total += labels.size(0)
         if i%10==0:
             print(f"y_max_pre={y_max_pre}")
             print(f"labels={labels}")
-            print(f'accuracy={correct/total}')
+    print(f'accuracy={correct/total}')
 
 
 
