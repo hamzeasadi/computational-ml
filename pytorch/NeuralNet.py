@@ -44,6 +44,16 @@ model = Net(input_size=input_size, hidden_size=hidden_size, num_classes=num_clas
 # model criterion and optimizer
 criterion = nn.MSELoss()
 opt = torch.optim.SGD(params=model.parameters(), lr=learning_rate)
+for param in model.parameters():
+    print(param.name)
+# define a train function
+def train(data, model, epochs):
+    train_loss = []
+    test_loss = []
+    correct = 0.0
+    for i, (image, label) in enumerate(data):
+        img = image.reshape(-1, input_size)
+
 
 
 
