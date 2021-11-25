@@ -68,7 +68,14 @@ def train(data, model, epochs):
         loss = 0.0
         for i, (images, labels) in enumerate(data):
             y_pre = model(images)
-            loss = cri
+            loss = criterion(y_pre, labels)
+            opt.zero_grad()
+            loss.backward()
+            opt.step()
+        print(f"epoch={epoch+1}, loss={loss.item()}")
+
+    torch.save(model.state_dict(), model_path)
+
 
 
 
