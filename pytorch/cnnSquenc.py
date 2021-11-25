@@ -7,6 +7,13 @@ import torchvision
 from torch import nn as nn
 from torchvision.transforms import transforms
 
+
+# Hyper parameters
+num_epochs = 5
+num_classes = 10
+batch_size = 100
+learning_rate = 0.001
+
 # device configuration
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
@@ -15,7 +22,10 @@ train_dataset = torchvision.datasets.MNIST(root='data/', train=True, download=Tr
                                         transform=transforms.ToTensor())
 test_dataset = torchvision.datasets.MNIST(root='data/', train=False, download=True,
                                             transform=transforms.ToTensor())
-                                            
+
+# create torch dataloader util
+train_dl = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=)
+
 
 
 
