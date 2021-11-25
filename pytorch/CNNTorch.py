@@ -78,7 +78,12 @@ def train(data, model, epochs):
         print(f"epoch={epoch+1}, loss={loss.item()}")
 
     torch.save(model.state_dict(), model_path)
-    
+
+
+train(data=train_dl, model=model, epochs=num_epochs)
+
+
+
 
 
 
