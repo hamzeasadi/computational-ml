@@ -28,9 +28,34 @@ train_dl = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_s
                                         shuffle=True)
 test_dl = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=batch_size)
 
-                                        
+# define and create a model
+class CnnModel(nn.Module):
+    """a simple cnn for minist dataset"""
+    def __init__(self, num_classes):
+        super(CnnModel, self).__init__()
+        self.layer1 = nn.Sequential(
+        nn.Conv2d(in_channels=1, out_channels=16, stride=1, padding=2, kernel_size=5),
+        nn.BatchNorm2d(num_features=16),
+        nn.ReLU(),
+        nn.MaxPool2d(kernel_size=4, stride=2)
+        )
+        self.layer2 = nn.Sequential(
+        nn.Conv2d(in_channels=16, out_channels=32, kernel_size=5, stride=1, padding=2),
+        nn.BatchNorm2d(num_features=32),
+        nn.ReLU(),
+        nn.MaxPool2d(kernel_size=(2, 2), stride=2)
+        )
+        self.fc = nn.Linear(in_features=7*7*32, out_features=num_classes)
+
+    def forward(self, x):
+        x = self.layer1(x)
+        x = self.layer2(x)
+        out = self.fc(x)
+        return out
 
 
+
+model = CnnModel(num_classes=num_classes)
 
 
 
