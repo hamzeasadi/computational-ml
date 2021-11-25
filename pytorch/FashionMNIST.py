@@ -18,7 +18,13 @@ train_dataset = torchvision.datasets.FashionMNIST(root='data/', train=True, down
                                                  transform=transforms.ToTensor())
 test_dataset = torchvision.datasets.FashionMNIST(root='data/', train=False, download=True,
                                                 transform=transforms.ToTensor())
-                                                                                                 
+
+# dataloader creation from train test
+train_dl = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_size,
+                                        shuffle=True)
+test_dl = torch.utils.data.DataLoader(dataset=test_dataset, shuffle=True,
+                                        batch_size=batch_size)
+                                                                                                                                                                                
 
 # model setting
 """
