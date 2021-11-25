@@ -56,8 +56,19 @@ class CnnModel(nn.Module):
 
 
 model = CnnModel(num_classes=num_classes)
+model_path = os.path.join(os.getcwd(), 'data', 'cnnSquenc.ckpt')
+# define loss and optimizer associated with our model
+criterion = nn.CrossEntropyLoss()
+opt = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
 
+# define and implement a train fuction
+def train(data, model, epochs):
 
+    for epoch in range(epochs):
+        loss = 0.0
+        for i, (images, labels) in enumerate(data):
+            y_pre = model(images)
+            loss = cri
 
 
 
