@@ -12,6 +12,8 @@ num_classes = 10
 num_epochs = 1
 learning_rate = 1e-3
 batch_size = 100
+input_shape = (1, 28, 28)
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 # load dataset
 train_dataset = torchvision.datasets.FashionMNIST(root='data/', train=True, download=True,
@@ -24,7 +26,7 @@ train_dl = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_s
                                         shuffle=True)
 test_dl = torch.utils.data.DataLoader(dataset=test_dataset, shuffle=True,
                                         batch_size=batch_size)
-                                                                                                                                                                                
+
 
 # model setting
 """
@@ -42,19 +44,21 @@ class FashionMNISTBase(nn.Module):
     """
     A basic cnn model for classifing fashion mnist dataset
     """
-    def __init__(self, input_shape=(1, 28, 28), num_classes):
+    def __init__(self, input_shape, num_classes):
         super(FashionMNISTBase, self).__init__()
         self.layer1 = nn.Sequential(
-        nn.Conv2d(in_channels=1, outchannels=64, kernel_size=(2, 2), stride=1, padding=2),
+        nn.Conv2d(in_channels=1, out_channels=64, kernel_size=(2, 2), stride=1, padding=2),
         nn.ReLU(),
+        nn.MaxPool2d(kernel_size=2, stride=2),
         nn.Dropout(p=0.3)
         )
         self.layer2 = nn.Sequential(
         nn.Conv2d(in_channels=64, out_channels=32, kernel_size=(2, 2), stride=1, padding=2),
         nn.ReLU(),
+        nn.MaxPool2d(kernel_size=2, stride=2),
         nn.Dropout(p=0.3)
         )
-        n_size = self._get_conv_output(input_shape)
+        n_size = 32*7*7
         self.fc = nn.Linear(in_features=n_size, out_features=num_classes)
 
     def forward(self, x):
@@ -63,9 +67,23 @@ class FashionMNISTBase(nn.Module):
         out = self.fc(x)
         return out
 
-# define and implement a train function
+
+
+model = FashionMNISTBase(input_shape=input_shape, num_classes=num_classes)
+
+# print(model)
+
+
+define and implement a train function
 def train(data, model, epochs):
-    pass
+    loss = 0.0
+    for epoch in range(epochs):
+
+        for i, (images, labels) in enumerate(data):
+            y_pre = model(images)
+            loss = criterion(y_pre, labels)
+
+
 
 
 
