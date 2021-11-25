@@ -78,14 +78,14 @@ def test(data, model):
     with torch.no_grad():
         for i, (image, label) in enumerate(data):
             img = image.reshape(-1, model.fc1.in_features)
-            pre = model(img)
+            y_pre = model(img)
             loss = criterion(y_pre, label)
             y_pre_maxes = torch.argmax(y_pre, dim=1)
             correct += (y_pre_maxes == label).sum()
             total += len(label)
             print(f"batch={i+1}, loss={loss.item()}, accuracy={correct/total}")
 
-mymodel = Net()
+mymodel = Net(input_size=input_size, hidden_size=hidden_size, num_classes=num_classes)
 mymodel.load_state_dict(torch.load(model_path))
 test(data=test_dl,model=mymodel)
 
