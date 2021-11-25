@@ -37,7 +37,12 @@ class Net(nn.Module):
         x = self.relu(x)
         out = self.fc2(x)
         return out
-    
+
+model = Net(input_size=input_size, hidden_size=hidden_size, num_classes=num_classes)
+
+print(model.summary())
+
+
 
 
 
