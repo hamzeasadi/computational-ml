@@ -44,15 +44,33 @@ model = Net(input_size=input_size, hidden_size=hidden_size, num_classes=num_clas
 # model criterion and optimizer
 criterion = nn.MSELoss()
 opt = torch.optim.SGD(params=model.parameters(), lr=learning_rate)
-for param in model.parameters():
-    print(param.name)
+
 # define a train function
+model_path = os.path.join(os.getcwd(), 'data', 'neuralnet.ckpt')
 def train(data, model, epochs):
     train_loss = []
-    test_loss = []
-    correct = 0.0
-    for i, (image, label) in enumerate(data):
-        img = image.reshape(-1, input_size)
+
+    for epoch in range(epochs):
+        loss = 0.0
+        for i, (image, label) in enumerate(data):
+            img = image.reshape(-1, model.fc1.in_features)
+            y_pre = model(img)
+            y_pre_maxes = torch.argmax(y_pre, dim=1)
+            loss = criterion(y_pre, label)
+            train_loss.append(loss.item())
+            opt.zero_grad()
+            loss.backward()
+            opt.step()
+
+        print(f"epoch={epoch}, loss={loss.item()}")
+        print(f"fc2={model.fc2}, fc2.grad={model.fc2.grad}")
+
+    model.save(model.state_dict(), model_path)
+    plt.plot(np.arange(len(train_loss)), train_loss)
+
+
+train(data=train_dl, model=model, epochs=num_epochs)
+
 
 
 
