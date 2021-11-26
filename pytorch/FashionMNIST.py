@@ -111,14 +111,14 @@ class FashionMNISTBaseModel(nn.Module):
         out = self.layer4(x)
         return out
 
-model = FashionMNISTBaseModel(num_class=num_classes)
+model = FashionMNISTBaseModel(num_class=num_classes).to(device)
 
 # define loss and optimization functions
 criterion = nn.CrossEntropyLoss()
 opt = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
 
 # define and implement train function
-def train(model, criteria, optimizer, train_data, val_data, epochs, ckp_path, bst_model_path, is_best, valid_loss_min):
+def train(model, criteria, optimizer, train_data, val_data, epochs, ckp_path, bst_model_path, is_best, val_loss_min_in):
     T_loss = []
     V_loss = []
     for epoch in range(epochs):
@@ -165,7 +165,7 @@ def train(model, criteria, optimizer, train_data, val_data, epochs, ckp_path, bs
     plt.xlabel('epoch')
     plt.ylabel('avg loss')
     plt.legend()
-    plt.savefig(os.paht.join(os.getcwd(), 'data/images', 'train-val-error.png'))
+    plt.savefig(os.path.join(os.getcwd(), 'data/images', 'train-val-error.png'))
     plt.show()
     return model
 
@@ -174,19 +174,14 @@ train(model=model, criteria=criterion, optimizer=opt, train_data=train_dl, val_d
         ckp_path=checkpoint_path, bst_model_path=best_model_path, is_best=False, valid_loss_min=np.inf)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+# load checkpoint data
+def load_ckp(ckp_path, model, optimizer):
+    checkpoint = torch.load(ckp_path)
+    model.load_state_dict(checkpoint['state_dict'])
+    optimizer.load_state_dict(checkpoint['optimizer'])
+    val_min_error = checkpoint['valid_loss_min']
+    epoch = checkpoint['epoch']
+    return model, optimizer, epoch, val_min_error
 
 
 if __name__ == '__main__':
