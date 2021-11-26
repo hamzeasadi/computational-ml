@@ -39,7 +39,7 @@ def load_ckp(checkpoint_path, model, optimizer):
     return model, optimizer, checkpoint['epoch'], valid_loss_min.item()
 
 # define transforms
-mean_std_cal = torch.utils.data.DataLoader(dataset=)
+# mean_std_cal = torch.utils.data.DataLoader(dataset=)
 transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=0.2860, std=0.3530)])
 
 # load datasets
@@ -101,7 +101,7 @@ def save_ckp(state, is_best, checkpoint_path, best_model_path):
         best_fpath = best_model_path
         shutil.copyfile(src=f_path, dst=best_fpath)
 
-def train(epochs, valid_loss_min_in, tdata, vdata, , model, optimizer, criteria, checkpoint_path, best_model_path):
+def train(epochs, valid_loss_min_in, tdata, vdata, model, optimizer, criteria, checkpoint_path, best_model_path):
     valid_loss_min = valid_loss_min_in
     T_loss = []
     V_loss = []
@@ -141,17 +141,20 @@ def train(epochs, valid_loss_min_in, tdata, vdata, , model, optimizer, criteria,
         save_ckp(state=checkpoint, is_best=False, checkpoint_path=checkpoint_path, best_model_path='')
         # save the best model
         if valid_loss_min_in > valid_loss:
-            ave_ckp(state=checkpoint, is_best=True, checkpoint_path=checkpoint_path, best_model_path=best_model_path)
+            save_ckp(state=checkpoint, is_best=True, checkpoint_path=checkpoint_path, best_model_path=best_model_path)
             valid_loss_min_in = valid_loss
-    return model
+
     plt.plot(np.arange(len(T_loss)), T_loss, label='train loss')
     plt.plot(np.arange(len(T_loss)), V_loss, label='valid loss')
     plt.xlabel('epoch')
     plt.legend()
     plt.show()
+    return model
 
 
-train()
+train(epochs=num_epochs, valid_loss_min_in=1e+10, tdata=train_dl, vdata=val_dl,
+    model=model, optimizer=opt, criteria=criterion, checkpoint_path=checkpoint_path,
+    best_model_path=best_model_path)
 
 # def train(data, model, epochs):
 #
