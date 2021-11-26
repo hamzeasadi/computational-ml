@@ -139,7 +139,11 @@ def train(epochs, valid_loss_min_in, tdata, vdata, , model, optimizer, criteria,
         }
         # save a checkpoint
         save_ckp(state=checkpoint, is_best=False, checkpoint_path=checkpoint_path, best_model_path='')
-        
+        # save the best model
+        if valid_loss_min_in > valid_loss:
+            ave_ckp(state=checkpoint, is_best=True, checkpoint_path=checkpoint_path, best_model_path=best_model_path)
+            valid_loss_min_in = valid_loss
+    return model
     plt.plot(np.arange(len(T_loss)), T_loss, label='train loss')
     plt.plot(np.arange(len(T_loss)), V_loss, label='valid loss')
     plt.xlabel('epoch')
