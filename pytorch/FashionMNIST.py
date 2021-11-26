@@ -15,3 +15,5 @@ learning_rate = 1e-3
 batch_size = 100
 input_shape = (1, 28, 28)
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+checkpoint_path = os.path.join(os.getcwd(), 'data/checkpoint', 'checkpoint.pt')
+best_model_path = os.path.join(os.getcwd(), 'data/best_model' 'best_model.pt')
