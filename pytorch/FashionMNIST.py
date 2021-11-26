@@ -183,8 +183,26 @@ def load_ckp(ckp_path, model, optimizer):
     epoch = checkpoint['epoch']
     return model, optimizer, epoch, val_min_error
 
+# get the best model
 untrain_model = FashionMNISTBaseModel(num_class=num_classes)
 model, optimizer, epoch, val_min_error = load_ckp(ckp_path=checkpoint_path, model=untrain_model, optimizer=opt)
+
+# test evaluation
+with torch.no_grad():
+    test_loss = 0.0
+    correct = 0.0
+    total = 0.0
+    for btch_idx, (images, labels) in enumerate(test_dl):
+        images = images.to(device)
+        labels = labels.to(device)
+        cls_pre = model(images)
+        loss = criterion(cls_pre, labels)
+        test_loss += loss.item()
+        cl_predicted = torch.argmax(cls_pre, dim=1)
+        correct += sum(cl_predicted == labels)
+        total += len(labels)
+    print(f"loss={test_loss/total}, accuracy={correct/total}")
+
 
 
 if __name__ == '__main__':
