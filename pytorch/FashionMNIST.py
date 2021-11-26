@@ -117,6 +117,44 @@ model = FashionMNISTBaseModel(num_class=num_classes)
 criterion = nn.CrossEntropyLoss()
 opt = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
 
+# define and implement train function
+def train(model, criteria, optimizer, train_data, val_data, epochs, ckp_path, bst_model_path, is_best, valid_loss_min):
+    T_loss = []
+    V_loss = []
+    for epoch in range(epochs):
+        train_loss_avg = 0.0
+        val_loss_avg = 0.0
+        model.train()
+        for btch_idx, (images, labels) in enumerate(train_data):
+            images = images.to(device)
+            labels = labels.to(device)
+            cls_pre = model(images)
+            optimizer.zero_grad()
+            loss = criteria(cls_pre, labels)
+            loss.backward()
+            optimizer.step()
+            train_loss_avg =+ (loss.item() - train_loss_avg)/len(labels)
+        model.eval()
+        with torch.no_grad():
+            for btch_idx, (images, labels) in enumerate(val_data):
+                images = images.to(device)
+                labels = labels.to(device)
+                cls_pre = model(images)
+                loss = criteria(cls_pre, labels)
+                val_loss_avg += (loss.item() - val_loss_avg)/len(labels)
+        print(f"epoch={epoch+1}, train-loss={train_loss_avg/len(train_data)}, val-loss={val_loss_avg/len(val_data)}")
+        checkpoint = {
+        'epoch': epoch+1,
+        'valid_loss_min': val_loss_avg,
+        'state_dict': model.state_dict(),
+        'optimizer': optimizer.state_dict()
+        }
+        
+
+
+
+
+
 
 
 
