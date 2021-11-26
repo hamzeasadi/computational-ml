@@ -58,8 +58,16 @@ test_dataset = torchvision.datasets.FashionMNIST(root='data', train=False, downl
 #     plt.imshow(img.squeeze(), cmap="gray")
 # plt.show()
 
-# data loader creation
+# train validation data split
 train_dataset, val_dataset = torch.utils.data.random_split(train_val_dataset, [50000, 10000])
+
+# data loader creation
+train_dl = torch.utils.data.DataLoader(dataset=train_dataset, shuffle=True,
+                                        batch_size=batch_size)
+val_dl = torch.utils.data.DataLoader(dataset=val_dataset, shuffle=True,
+                                        batch_size=batch_size)
+test_dl = torch.utils.data.DataLoader(dataset=test_dataset, shuffle=True,
+                                        batch_size=batch_size)                                        
 
 
 
