@@ -23,12 +23,12 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 checkpoint_path = os.path.join(os.getcwd(), 'data', 'checkpoint', 'current_checkpoint.pt')
 best_model_path = os.path.join(os.getcwd(), 'data', 'best_model', 'best_model_path.pt')
 
- def save_ckp(state, is_best, checkpoint_path, best_model_path):
-     f_path = checkpoint_path
-     torch.save(state, f_path)
-     if is_best:
-         best_fpath = best_model_path
-         shutil.copyfile(src=f_path, dst=best_fpath)
+def save_ckp(state, is_best, checkpoint_path, best_model_path):
+    f_path = checkpoint_path
+    torch.save(state, f_path)
+    if is_best:
+        best_fpath = best_model_path
+        shutil.copyfile(src=f_path, dst=best_fpath)
 
 # define and implement load checkpoint function
 def load_ckp(checkpoint_path, model, optimizer):
@@ -38,21 +38,27 @@ def load_ckp(checkpoint_path, model, optimizer):
     valid_loss_min = checkpoint['valid_loss_min']
     return model, optimizer, checkpoint['epoch'], valid_loss_min.item()
 
+# define transforms
+mean_std_cal = torch.utils.data.DataLoader(dataset=)
+transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=0.2860, std=0.3530)])
+
 # load datasets
 train_dataset = torchvision.datasets.MNIST(root='data/', train=True, download=True,
-                                        transform=transforms.ToTensor())
+                                        transform=transform)
 test_dataset = torchvision.datasets.MNIST(root='data/', train=False, download=True,
-                                            transform=transforms.ToTensor())
-train_set, val_set = torch.utils.data.random_split(train_dataset, [40000, 10000])
+                                            transform=transform)
+train_set, val_set = torch.utils.data.random_split(train_dataset, [50000, 10000])
 
-print(train_set.shape)
 
-#
-# # create torch dataloader util
-# train_dl = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_size,
-#                                         shuffle=True)
-# test_dl = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=batch_size)
-#
+
+# create torch dataloader util
+train_dl = torch.utils.data.DataLoader(dataset=train_set, batch_size=batch_size,
+                                        shuffle=True)
+val_dl = torch.utils.data.DataLoader(dataset=val_set, batch_size=batch_size,
+                                    shuffle=True)
+test_dl = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=batch_size)
+
+
 # # define and create a model
 # class CnnModel(nn.Module):
 #     """a simple cnn for minist dataset"""
