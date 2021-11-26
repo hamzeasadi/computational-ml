@@ -47,24 +47,33 @@ class FashionMNISTBase(nn.Module):
     def __init__(self, input_shape, num_classes):
         super(FashionMNISTBase, self).__init__()
         self.layer1 = nn.Sequential(
-        nn.Conv2d(in_channels=1, out_channels=64, kernel_size=(2, 2), stride=1, padding=2),
+        nn.Conv2d(in_channels=1, out_channels=64, kernel_size=2, stride=1, padding=2),
         nn.ReLU(),
         nn.MaxPool2d(kernel_size=2, stride=2),
         nn.Dropout(p=0.3)
         )
         self.layer2 = nn.Sequential(
-        nn.Conv2d(in_channels=64, out_channels=32, kernel_size=(2, 2), stride=1, padding=2),
+        nn.Conv2d(in_channels=64, out_channels=32, kernel_size=2, stride=1, padding=2),
         nn.ReLU(),
         nn.MaxPool2d(kernel_size=2, stride=2),
         nn.Dropout(p=0.3)
         )
-        n_size = 32*7*7
-        self.fc = nn.Linear(in_features=n_size, out_features=num_classes)
+        self.outlayer = nn.Sequential(
+        nn.Flatten(),
+        nn.Linear(in_features=2592, out_features=num_classes),
+        nn.Softmax()
+        )
+        # self.flatten = nn.Flatten()
+        # n_size = 32*7*7
+        # self.fc = nn.Linear(in_features=n_size, out_features=num_classes)
+        # self.softmax = nn.softmax(num_classes)
 
     def forward(self, x):
         x = self.layer1(x)
         x = self.layer2(x)
-        out = self.fc(x)
+        # x = self.flatten(x)
+        # x = self.fc(x)
+        out = self.outlayer(x)
         return out
 
 
@@ -75,7 +84,7 @@ model = FashionMNISTBase(input_shape=input_shape, num_classes=num_classes).to(de
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
 
-define and implement a train function
+# define and implement a train function
 def train(data, model, epochs):
     loss = 0.0
     for epoch in range(epochs):
@@ -83,10 +92,14 @@ def train(data, model, epochs):
         for i, (images, labels) in enumerate(data):
             y_pre = model(images)
             loss = criterion(y_pre, labels)
-            opt.
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+            if i%50==0:
+                print(f"batch={i+1}, loss={loss.item()}")
 
 
-
+train(data=train_dl, model=model, epochs=num_epochs)
 
 
 

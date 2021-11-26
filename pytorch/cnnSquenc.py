@@ -6,6 +6,7 @@ import torch
 import torchvision
 from torch import nn as nn
 from torchvision.transforms import transforms
+import shutil
 
 
 # Hyper parameters
@@ -64,6 +65,9 @@ criterion = nn.CrossEntropyLoss()
 opt = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
 
 # define and implement a train fuction
+# save the model with checkpoints
+ def
+
 def train(data, model, epochs):
 
     for epoch in range(epochs):
@@ -76,7 +80,7 @@ def train(data, model, epochs):
             opt.step()
         print(f"epoch={epoch+1}, loss={loss.item()}")
 
-    torch.save(model.state_dict(), model_path)
+
 
 # train(data=train_dl, model=model, epochs=num_epochs)
 
