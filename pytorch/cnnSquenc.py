@@ -66,7 +66,15 @@ opt = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
 
 # define and implement a train fuction
 # save the model with checkpoints
- def
+checkpoint_path = os.path.join(os.getcwd(), 'data', 'checkpoint', 'current_checkpoint.pt')
+best_model_path = os.path.join(os.getcwd(), 'data', 'best_model', 'best_model_path.pt')
+
+ def save_ckp(state, is_best, checkpoint_path, best_model_path):
+     f_path = checkpoint_path
+     torch.save(state, f_path)
+     if is_best:
+         best_fpath = best_model_path
+         shutil.copyfile(src=f_path, dst=best_fpath)
 
 def train(data, model, epochs):
 
