@@ -130,13 +130,14 @@ def train(epochs, valid_loss_min_in, tdata, vdata, , model, optimizer, criteria,
         T_loss.append(train_loss/len(tdata))
         V_loss.append(valid_loss/len(vdata))
         print(f"epoch = {epoch+1} train loss = {train_loss}   val loss = {valid_loss}")
-
+        # make a checkpoint
         checkpoint = {
         'epoch': epoch+1,
         'valid_loss_min': valid_loss,
         'state_dict': model.state_dict(),
         'optimizer': optimizer.state_dict()
         }
+        
     plt.plot(np.arange(len(T_loss)), T_loss, label='train loss')
     plt.plot(np.arange(len(T_loss)), V_loss, label='valid loss')
     plt.xlabel('epoch')
