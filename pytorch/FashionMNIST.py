@@ -28,8 +28,12 @@ def save_ckp(state, is_best, ckp_path, bst_model_path):
 # make transforms for the data preprocess
 transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=0.2860, std=0.3530)])
 
-
-# train_val_dataset = torchvision.datasets.FashionMNIST(root='data', train=True, )
+# load dataset
+train_val_dataset = torchvision.datasets.FashionMNIST(root='data', train=True, download=True,
+                                                        transform=transform)
+test_dataset = torchvision.datasets.FashionMNIST(root='data', train=False, download=True,
+                                                transform=transform)
+                                                                                                        
 
 
 
