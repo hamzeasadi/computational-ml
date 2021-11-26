@@ -170,6 +170,10 @@ def train(model, criteria, optimizer, train_data, val_data, epochs, ckp_path, bs
     return model
 
 
+train(model=model, criteria=criterion, optimizer=opt, train_data=train_dl, val_data=val_dl, epochs=num_epochs,
+        ckp_path=checkpoint_path, bst_model_path=best_model_path, is_best=False, valid_loss_min=np.inf)
+
+
 
 
 
