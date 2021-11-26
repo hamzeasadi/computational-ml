@@ -6,6 +6,7 @@ import torch
 import torchvision
 from torch import nn as nn
 from torchvision.transforms import transforms
+import shutil
 
 
 # set hyper parameters
@@ -17,3 +18,17 @@ input_shape = (1, 28, 28)
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 checkpoint_path = os.path.join(os.getcwd(), 'data/checkpoint', 'checkpoint.pt')
 best_model_path = os.path.join(os.getcwd(), 'data/best_model' 'best_model.pt')
+
+# checkpoint save function
+def save_ckp(state, is_best, ckp_path, bst_model_path):
+    torch.save(state, ckp_path)
+    if is_best:
+        shutil.copyfile(src=ckp_path, dst=bst_model_path)
+
+
+
+
+
+
+if __name__ == '__main__':
+    pass
