@@ -93,6 +93,7 @@ class FashionMNISTBaseModel(nn.Module):
         nn.Dropout(p=0.3)
         )
         conv_out_size = 7*7*32
+        self.flatten = nn.Flatten()
         self.layer3 = nn.Sequential(
         nn.Linear(in_features=conv_out_size, out_features=256),
         nn.ReLU()
@@ -101,7 +102,17 @@ class FashionMNISTBaseModel(nn.Module):
         nn.Linear(in_features=256, out_features=num_class),
         nn.Softmax()
         )
+
+    def forward(self, x):
+        x = self.layer1(x)
+        x = self.layer2(x)
+        x = self.flatten(x)
+        x = self.layer3(x)
+        out = self.layer4(x)
+        return out
+
     
+
 
 
 
