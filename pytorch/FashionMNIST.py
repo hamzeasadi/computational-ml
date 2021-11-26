@@ -67,7 +67,42 @@ train_dl = torch.utils.data.DataLoader(dataset=train_dataset, shuffle=True,
 val_dl = torch.utils.data.DataLoader(dataset=val_dataset, shuffle=True,
                                         batch_size=batch_size)
 test_dl = torch.utils.data.DataLoader(dataset=test_dataset, shuffle=True,
-                                        batch_size=batch_size)                                        
+                                        batch_size=batch_size)
+
+# define and create the model
+class FashionMNISTBaseModel(nn.Module):
+    """
+    This is a basic model with following hyper parameters:
+    layer-1: convolution with 1 input channel and 64 output channel, activation function relue, maxpooling, dropout=0.3
+    layer-2: convolution with 16 input channel and 32 output channel, activation function relue, maxpooling, dropout=0.3
+    layer-3: fully connected with 7*7*32 input features and 256 output features, activation function relue
+    layer-4: fully connected with 256 input features and 10 output features, activation function softmax
+    """
+    def __init__(self, num_class):
+        super(FashionMNISTBaseModel, self).__init__()
+        self.layer1 = nn.Sequential(
+        nn.Conv2d(in_channels=1, out_channels=64, kernel_size=2, stride=1, padding=1),
+        nn.ReLU(),
+        nn.MaxPool2d(kernel_size=2, stride=2),
+        nn.Dropout(p=0.3)
+        )
+        self.layer2 = nn.Sequential(
+        nn.Conv2d(in_channels=64, out_channels=32, kernel_size=2, stride=1, padding=1),
+        nn.ReLU(),
+        nn.MaxPool2d(kernel_size=2, stride=2),
+        nn.Dropout(p=0.3)
+        )
+        conv_out_size = 7*7*32
+        self.layer3 = nn.Sequential(
+        nn.Linear(in_features=conv_out_size, out_features=256),
+        nn.ReLU()
+        )
+        self.layer4 = nn.Sequential(
+        nn.Linear(in_features=256, out_features=num_class),
+        nn.Softmax()
+        )
+    
+
 
 
 
