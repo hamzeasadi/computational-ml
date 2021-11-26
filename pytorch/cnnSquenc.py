@@ -76,6 +76,16 @@ best_model_path = os.path.join(os.getcwd(), 'data', 'best_model', 'best_model_pa
          best_fpath = best_model_path
          shutil.copyfile(src=f_path, dst=best_fpath)
 
+# define and implement load checkpoint function
+def load_ckp(checkpoint_path, model, optimizer):
+    checkpoint = torch.load(checkpoint_path)
+    model.load_state_dict(checkpoint['state_dict'])
+    optimizer.load_state_dict(checkpoint['optimizer'])
+    valid_loss_min = checkpoint['valid_loss_min']
+    return model, optimizer, checkpoint['epoch'], valid_loss_min.item()
+    
+
+
 def train(data, model, epochs):
 
     for epoch in range(epochs):
