@@ -35,28 +35,31 @@ test_dataset = torchvision.datasets.FashionMNIST(root='data', train=False, downl
                                                 transform=transform)
 
 # visualize the data
-labels_map = {
-    0: "T-Shirt",
-    1: "Trouser",
-    2: "Pullover",
-    3: "Dress",
-    4: "Coat",
-    5: "Sandal",
-    6: "Shirt",
-    7: "Sneaker",
-    8: "Bag",
-    9: "Ankle Boot",
-}
-figure = plt.figure(figsize=(8, 8))
-cols, rows = 3, 3
-for i in range(1, cols * rows + 1):
-    sample_idx = torch.randint(len(test_dataset), size=(1,)).item()
-    img, label = test_dataset[sample_idx]
-    figure.add_subplot(rows, cols, i)
-    plt.title(labels_map[label])
-    plt.axis("off")
-    plt.imshow(img.squeeze(), cmap="gray")
-plt.show()
+# labels_map = {
+#     0: "T-Shirt",
+#     1: "Trouser",
+#     2: "Pullover",
+#     3: "Dress",
+#     4: "Coat",
+#     5: "Sandal",
+#     6: "Shirt",
+#     7: "Sneaker",
+#     8: "Bag",
+#     9: "Ankle Boot",
+# }
+# figure = plt.figure(figsize=(8, 8))
+# cols, rows = 3, 3
+# for i in range(1, cols * rows + 1):
+#     sample_idx = torch.randint(len(test_dataset), size=(1,)).item()
+#     img, label = test_dataset[sample_idx]
+#     figure.add_subplot(rows, cols, i)
+#     plt.title(labels_map[label])
+#     plt.axis("off")
+#     plt.imshow(img.squeeze(), cmap="gray")
+# plt.show()
+
+# data loader creation
+train_dataset, val_dataset = torch.utils.data.random_split(train_val_dataset, [50000, 10000])
 
 
 
