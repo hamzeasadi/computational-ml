@@ -149,7 +149,12 @@ def train(model, criteria, optimizer, train_data, val_data, epochs, ckp_path, bs
         'state_dict': model.state_dict(),
         'optimizer': optimizer.state_dict()
         }
-        
+        # save the checkpoint
+        save_ckp(state=checkpoint, ckp_path=ckp_path, bst_model_path=bst_model_path, is_best=False)
+        if val_loss_avg > val_loss_min_in:
+            save_ckp(state=checkpoint, ckp_path=ckp_path, bst_model_path=bst_model_path, is_best=True)
+            val_loss_min_in = val_loss_avg
+
 
 
 
