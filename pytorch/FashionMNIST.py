@@ -188,6 +188,7 @@ untrain_model = FashionMNISTBaseModel(num_class=num_classes)
 model, optimizer, epoch, val_min_error = load_ckp(ckp_path=checkpoint_path, model=untrain_model, optimizer=opt)
 
 # test evaluation
+model = model.to(device)
 with torch.no_grad():
     test_loss = 0.0
     correct = 0.0
@@ -202,6 +203,10 @@ with torch.no_grad():
         correct += sum(cl_predicted == labels)
         total += len(labels)
     print(f"loss={test_loss/total}, accuracy={correct/total}")
+    y_true = labels.to('cpu').numpy()
+    y_predicted = cl_predicted.to('cpu').numpy()
+    cnf_mtrx = confusion_matrix(y_true, y_predicted)
+    sns.heatmap(cnf_mtrx, annot=True)
 
 
 
