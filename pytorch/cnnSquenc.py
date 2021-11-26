@@ -137,6 +137,8 @@ def train(epochs, valid_loss_min_in, tdata, vdata, , model, optimizer, criteria,
         'state_dict': model.state_dict(),
         'optimizer': optimizer.state_dict()
         }
+        # save a checkpoint
+        save_ckp(state=checkpoint, is_best=False, checkpoint_path=checkpoint_path, best_model_path='')
         
     plt.plot(np.arange(len(T_loss)), T_loss, label='train loss')
     plt.plot(np.arange(len(T_loss)), V_loss, label='valid loss')
