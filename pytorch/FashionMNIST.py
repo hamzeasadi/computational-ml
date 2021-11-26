@@ -183,6 +183,9 @@ def load_ckp(ckp_path, model, optimizer):
     epoch = checkpoint['epoch']
     return model, optimizer, epoch, val_min_error
 
+untrain_model = FashionMNISTBaseModel(num_class=num_classes)
+model, optimizer, epoch, val_min_error = load_ckp(ckp_path=checkpoint_path, model=untrain_model, optimizer=opt)
+
 
 if __name__ == '__main__':
     pass
