@@ -111,7 +111,14 @@ class FashionMNISTBaseModel(nn.Module):
         out = self.layer4(x)
         return out
 
-    
+model = FashionMNISTBaseModel(num_class=num_classes)
+
+# define loss and optimization functions
+criterion = nn.CrossEntropyLoss()
+opt = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
+
+
+
 
 
 
