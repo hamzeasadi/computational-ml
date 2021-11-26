@@ -134,6 +134,7 @@ def train(model, criteria, optimizer, train_data, val_data, epochs, ckp_path, bs
             loss.backward()
             optimizer.step()
             train_loss_avg =+ (loss.item() - train_loss_avg)/len(labels)
+
         model.eval()
         with torch.no_grad():
             for btch_idx, (images, labels) in enumerate(val_data):
@@ -142,6 +143,7 @@ def train(model, criteria, optimizer, train_data, val_data, epochs, ckp_path, bs
                 cls_pre = model(images)
                 loss = criteria(cls_pre, labels)
                 val_loss_avg += (loss.item() - val_loss_avg)/len(labels)
+
         print(f"epoch={epoch+1}, train-loss={train_loss_avg/len(train_data)}, val-loss={val_loss_avg/len(val_data)}")
         checkpoint = {
         'epoch': epoch+1,
@@ -154,6 +156,20 @@ def train(model, criteria, optimizer, train_data, val_data, epochs, ckp_path, bs
         if val_loss_avg > val_loss_min_in:
             save_ckp(state=checkpoint, ckp_path=ckp_path, bst_model_path=bst_model_path, is_best=True)
             val_loss_min_in = val_loss_avg
+        T_loss.append(train_loss_avg/len(train_data))
+        V_loss.append(val_loss_avg/len(val_data))
+    np.savetxt(fname=os.path.join(os.getcwd(), 'data', 'T_loss.csv'), X=np.array(T_loss), delimiter=',')
+    np.savetxt(fname=os.path.join(os.getcwd(), 'data', 'V_loss.csv'), X=np.array(V_loss), delimiter=',')
+    plt.plot(np.arange(len(T_loss)), T_loss, label='train loss')
+    plt.plot(np.arange(len(T_loss)), V_loss, label='valid loss')
+    plt.xlabel('epoch')
+    plt.ylabel('avg loss')
+    plt.legend()
+    plt.savefig(os.paht.join(os.getcwd(), 'data/images', 'train-val-error.png'))
+    plt.show()
+    return model
+
+
 
 
 
