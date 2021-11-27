@@ -22,7 +22,7 @@ checkpoint_path = os.path.join(data_path, 'checkpoint', checkpoint_name)
 best_model_path = os.path.join(data_path, 'best_model', model_name)
 
 # define hyper-parameters
-num_epochs = 1
+num_epochs = 2
 batch_size = 100
 learning_rate = 1e-3
 num_cls = 10
@@ -114,18 +114,64 @@ class CustomeCNNFashionMNIST(nn.Module):
 
 
 model = CustomeCNNFashionMNIST(num_classes=num_cls)
+model = model.to(device)
 
 # define model criterion and optimizer
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
+
+
 # define and implement trai function
-def train(model, opt, criterion, train_data, val_data, epochs, ckp_path, bst_mdl_path):
+def train(model, opt, criterion, train_data, val_data, epochs, ckp_path, bst_mdl_path, min_val_error_in, is_best):
     """train function"""
     for epoch in range(epochs):
         train_loss = 0.0
         val_loss = 0.0
+        model.train()
         for btch_idx, (images, labels) in enumerate(train_data):
+            images = images.to(device)
+            labels = labels.to(devices)
+            pre_cls = model(images)
+            loss = criterion(cls_pre, labels)
+            opt.zero_grad()
+            loss.backward()
+            opt.step()
+            train_loss += (loss.item() - train_loss)/len(labels)
 
+        model.eval()
+        with torch.no_grad():
+            for btch_idx, (images, labels) in enumerate(val_data):
+                images = images.to(device)
+                labels = labels.to(device)
+                pre_cls = model(images)
+                loss = criterion(pre_cls, labels)
+                val_loss += (loss.item() - val_loss)/len(labels)
+
+        print(f"epoch={epoch}, train_loss={train_loss}, validation_loss{val_loss}")
+
+        checkpoint_state = {
+        'epoch': epoch+1,
+        'min_val_error': val_loss,
+        'model_state': model.state_dict(),
+        'optimizer_state': opt.state_dict()
+        }
+
+        if val_loss > val_loss_min_in:
+            is_best=True
+            val_loss_min_in = val_loss
+        else:
+            is_best = False
+
+        save_ckp(state=checkpoint_state, ckp_path=checkpoint_path, is_best_model=is_best,
+                bst_model_path=best_model_path)
+
+    return model
+
+
+
+train(model=model, opt=optimizer, criterion=criterion, train_data=train_dl,
+        val_data=val_dl, epochs=num_epochs, ckp_path=checkpoint_path,
+        bst_mdl_path=best_model_path, min_val_error_in=np.inf, is_best=False)
 
 
 
