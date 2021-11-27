@@ -119,7 +119,7 @@ inp = torch.randn(1, 1, 28, 28)
 hl_transform = [ hl.transforms.Prune('Constant') ]
 graph = hl.build_graph(model, inp, transforms=hl_transform)
 graph.theme = hl.graph.THEMES['blue'].copy()
-graph
+plt.show()
 
 
 
