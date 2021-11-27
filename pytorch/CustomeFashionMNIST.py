@@ -76,7 +76,7 @@ class CustomeCNNFashionMNIST(nn.Module):
         nn.BatchNorm2d(num_features=32),
         nn.ReLU(),
         nn.Dropout(p=0.3),
-        nn.MaxPool(kernel_size=2, stride=2)
+        nn.MaxPool2d(kernel_size=2, stride=2)
         )
         self.layer2 = nn.Sequential(
         nn.Conv2d(in_channels=32, out_channels=16, kernel_size=2, stride=1,
@@ -84,7 +84,7 @@ class CustomeCNNFashionMNIST(nn.Module):
         nn.BatchNorm2d(num_features=16),
         nn.ReLU(),
         nn.Dropout(p=0.3),
-        nn.MaxPool(kernel_size=2, stride=2)
+        nn.MaxPool2d(kernel_size=2, stride=2)
         )
         self.layer3 = nn.Sequential(
         nn.Conv2d(in_channels=32, out_channels=16, kernel_size=2, stride=1,
@@ -92,7 +92,7 @@ class CustomeCNNFashionMNIST(nn.Module):
         nn.BatchNorm2d(num_features=16),
         nn.ReLU(),
         nn.Dropout(p=0.3),
-        nn.MaxPool(kernel_size=2, stride=2)
+        nn.MaxPool2d(kernel_size=2, stride=2)
         )
         self.fc = nn.Sequential(
         nn.Linear(in_features=7*7*16, out_features=256),
@@ -115,7 +115,11 @@ class CustomeCNNFashionMNIST(nn.Module):
 
 
 model = CustomeCNNFashionMNIST(num_classes=num_cls)
-
+inp = torch.randn(1, 1, 28, 28)
+hl_transform = [ hl.transforms.Prune('Constant') ]
+graph = hl.build_graph(model, inp, transforms=hl_transform)
+graph.theme = hl.graph.THEMES['blue'].copy()
+graph
 
 
 
