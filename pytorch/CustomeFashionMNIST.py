@@ -11,6 +11,7 @@ from torchvision import datasets
 from torchvision.transforms import transforms
 import shutil
 import hiddenlayer as hl
+from IPython.display import display, Image
 
 
 # define pathes
@@ -56,8 +57,13 @@ train_and_val_dataset = torchvision.datasets.FashionMNIST(root=data_path, train=
 test_dataset = torchvision.datasets.FashionMNIST(root=data_path, train=False,
                                                 download=True, transform=transforms.ToTensor())
 # create dataloader
-train_dataset, val_dataset = torch.utils.data.random_split(dataset=train_val_dataset, lengths=[50000, 10000])
-train_dl = torch.utils.data.DataLoader(dataset=train_dataset, shuffle=True, )
+train_dataset, val_dataset = torch.utils.data.random_split(dataset=train_and_val_dataset, lengths=[50000, 10000])
+train_dl = torch.utils.data.DataLoader(dataset=train_dataset, shuffle=True,
+                                        batch_size=batch_size)
+val_dl = torch.utils.data.DataLoader(dataset=val_dataset, shuffle=True,
+                                        batch_size=batch_size)
+test_dl = torch.utils.data.DataLoader(dataset=test_dataset, shuffle=True,
+                                        batch_size=batch_size)
 
 # define and implement network model
 """
@@ -81,24 +87,16 @@ class CustomeCNNFashionMNIST(nn.Module):
         super(CustomeCNNFashionMNIST, self).__init__()
         # super().__init__()
         self.layer1 = nn.Sequential(
-        nn.Conv2d(in_channels=1, out_channels=32, kernel_size=2, stride=1,
+        nn.Conv2d(in_channels=1, out_channels=32, kernel_size=3, stride=2,
                     padding=1, padding_mode='zeros'),
         nn.BatchNorm2d(num_features=32),
         nn.ReLU(),
         nn.Dropout(p=0.3),
         nn.MaxPool2d(kernel_size=2, stride=2)
         )
-        self.layer2 = nn.Sequential(
-        nn.Conv2d(in_channels=32, out_channels=16, kernel_size=2, stride=1,
-        padding=1, padding_mode='zeros'),
-        nn.BatchNorm2d(num_features=16),
-        nn.ReLU(),
-        nn.Dropout(p=0.3),
-        nn.MaxPool2d(kernel_size=2, stride=2)
-        )
 
         self.fc = nn.Sequential(
-        nn.Linear(in_features=7*7*16, out_features=256),
+        nn.Linear(in_features=7*7*32, out_features=256),
         nn.ReLU()
         )
         self.outlayer = nn.Sequential(
@@ -109,20 +107,24 @@ class CustomeCNNFashionMNIST(nn.Module):
 
     def forward(self, x):
         x = self.layer1(x)
-        x = self.layer2(x)
         x = self.flatten(x)
         x = self.fc(x)
         out = self.outlayer(x)
         return out
 
 
-# model = CustomeCNNFashionMNIST(num_classes=num_cls)
-# inp = torch.randn(1, 1, 28, 28)
-# hl_transform = [ hl.transforms.Prune('Constant') ]
-# model.eval()
-# graph = hl.build_graph(model, inp, transforms=hl_transform)
-# graph.theme = hl.graph.THEMES['blue'].copy()
+model = CustomeCNNFashionMNIST(num_classes=num_cls)
 
+# define model criterion and optimizer
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
+# define and implement trai function
+def train(model, opt, criterion, train_data, val_data, epochs, ckp_path, bst_mdl_path):
+    """train function"""
+    for epoch in range(epochs):
+        train_loss = 0.0
+        val_loss = 0.0
+        for btch_idx, (images, labels) in enumerate(train_data):
 
 
 
