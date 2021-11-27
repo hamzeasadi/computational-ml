@@ -60,6 +60,12 @@ test_dl = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=batch_siz
 
 
 # define and create a model
+"""
+Scheme 1: CONV/FC -> ReLu(or other activation) -> Dropout -> BatchNorm -> CONV/FC
+Scheme 2: CONV/FC -> BatchNorm -> ReLu(or other activation) -> Dropout -> CONV/FC
+* Conv - BatchNorm - Activation - DropOut - Pool
+Conv - DropOut - BatchNorm - Activation - Pool
+"""
 class CnnModel(nn.Module):
     """a simple cnn for minist dataset"""
     def __init__(self, num_classes):

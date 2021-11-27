@@ -10,6 +10,8 @@ import torchvision
 from torchvision import datasets
 from torchvision.transforms import transforms
 import shutil
+import hiddenlayer as hl
+
 
 # define pathes
 data_path = os.path.join(os.getcwd(), 'data')
@@ -47,8 +49,62 @@ def load_bst_model(bst_model_path, model, optimizer):
         min_val_error = checkpoint['min_val_error']
         return model, optimizer, epoch, min_val_error
 
+# define and implement network model
+"""
+Pytorch nn.Conv2d layer expects inputs of (batch_size, channels, height, width).
+Scheme 1: CONV/FC -> ReLu(or other activation) -> Dropout -> BatchNorm -> CONV/FC
+Scheme 2: CONV/FC -> BatchNorm -> ReLu(or other activation) -> Dropout -> CONV/FC
+* Conv - BatchNorm - Activation - DropOut - Pool
+Conv - DropOut - BatchNorm - Activation - Pool
+Resnet Order:
+Convolution
+Batch Normalization
+ReLU activation function
+Maxpooling
+"""
 
+class CustomeCNNFashionMNIST(nn.Module):
+    """
+    define a basic u-shape model for fashionMNIST dataset
+    """
+    def __init__(self, num_classes):
+        super(CustomeCNNFashionMNIST, self).__init__()
+        # super().__init__()
+        self.layer1 = nn.Sequential(
+        nn.Conv2d(in_channels=1, out_channels=32, kernel_size=2, stride=1,
+                    padding=1, padding_mode='zeros'),
+        nn.BatchNorm2d(num_features=32),
+        nn.ReLU(),
+        nn.Dropout(p=0.3),
+        nn.MaxPool(kernel_size=2, stride=2)
+        )
+        self.layer2 = nn.Sequential(
+        nn.Conv2d(in_channels=32, out_channels=16, kernel_size=2, stride=1,
+        padding=1, padding_mode='zeros'),
+        nn.BatchNorm2d(num_features=16),
+        nn.ReLU(),
+        nn.Dropout(p=0.3),
+        nn.MaxPool(kernel_size=2, stride=2)
+        )
+        self.layer3 = nn.Sequential(
+        nn.Conv2d(in_channels=32, out_channels=16, kernel_size=2, stride=1,
+        padding=1, padding_mode='zeros'),
+        nn.BatchNorm2d(num_features=16),
+        nn.ReLU(),
+        nn.Dropout(p=0.3),
+        nn.MaxPool(kernel_size=2, stride=2)
+        )
+        self.fc = nn.Sequential(
+        nn.Linear(in_features=7*7*16, out_features=256),
+        nn.ReLU()
+        )
+        self.outlayer = nn.Sequential(
+        nn.Linear(in_features=256, out_features=num_classes),
+        nn.Softmax()
+        )
 
+    def forward(self, x):
+        pass
 
 
 
