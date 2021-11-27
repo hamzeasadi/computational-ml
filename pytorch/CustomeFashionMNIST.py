@@ -18,6 +18,13 @@ model_name = f"best-model-custome-{0}.pt"
 checkpoint_path = os.path.join(data_path, 'checkpoint', checkpoint_name)
 best_model_path = os.path.join(data_path, 'best_model', model_name)
 
+# define hyper-parameters
+num_epochs = 1
+batch_size = 100
+learning_rate = 1e-3
+num_cls = 10
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
 
 
 
