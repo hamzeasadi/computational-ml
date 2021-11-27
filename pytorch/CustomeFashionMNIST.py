@@ -130,9 +130,9 @@ def train(model, opt, criterion, train_data, val_data, epochs, ckp_path, bst_mdl
         model.train()
         for btch_idx, (images, labels) in enumerate(train_data):
             images = images.to(device)
-            labels = labels.to(devices)
+            labels = labels.to(device)
             pre_cls = model(images)
-            loss = criterion(cls_pre, labels)
+            loss = criterion(pre_cls, labels)
             opt.zero_grad()
             loss.backward()
             opt.step()
@@ -156,9 +156,9 @@ def train(model, opt, criterion, train_data, val_data, epochs, ckp_path, bst_mdl
         'optimizer_state': opt.state_dict()
         }
 
-        if val_loss > val_loss_min_in:
+        if val_loss > min_val_error_in:
             is_best=True
-            val_loss_min_in = val_loss
+            min_val_error_in = val_loss
         else:
             is_best = False
 
