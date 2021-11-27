@@ -11,6 +11,13 @@ from torchvision import datasets
 from torchvision.transforms import transforms
 import shutil
 
+# define pathes
+data_path = os.path.join(os.getcwd(), 'data')
+checkpoint_name = f"checkpoint-custome-{0}.pt"
+model_name = f"best-model-custome-{0}.pt"
+checkpoint_path = os.path.join(data_path, 'checkpoint', checkpoint_name)
+best_model_path = os.path.join(data_path, 'best_model', model_name)
+
 
 
 
