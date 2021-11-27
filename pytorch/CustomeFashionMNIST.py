@@ -25,6 +25,31 @@ learning_rate = 1e-3
 num_cls = 10
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+# define and implement save and load checkpoints
+def save_ckp(state, ckp_path, is_best_model, bst_model_path):
+    torch.save(state, ckp_path)
+    if is_best_model:
+        shutil.copyfile(src=ckp_path, dst=bst_model_path)
+
+def load_ckp(ckp_path, model, optimizer):
+    checkpoint = torch.load(ckp_path)
+    model.load_state_dict(checkpoint['model_state_dict'])
+    optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+    epoch = checkpoint['epoch']
+    min_val_error = checkpoint['min_val_error']
+    return model, optimizer, epoch, min_val_error
+
+def load_bst_model(bst_model_path, model, optimizer):
+        checkpoint = torch.load(bst_model_path)
+        model.load_state_dict(checkpoint['model_state_dict'])
+        optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        epoch = checkpoint['epoch']
+        min_val_error = checkpoint['min_val_error']
+        return model, optimizer, epoch, min_val_error
+
+
+
+
 
 
 
