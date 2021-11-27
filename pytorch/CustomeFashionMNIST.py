@@ -99,15 +99,22 @@ class CustomeCNNFashionMNIST(nn.Module):
         nn.ReLU()
         )
         self.outlayer = nn.Sequential(
-        nn.Linear(in_features=256, out_features=num_classes),
+        nn.Linear(in_features=256*2, out_features=num_classes),
         nn.Softmax()
         )
 
     def forward(self, x):
-        pass
+        x = self.layer1(x)
+        b1 = self.layer2(x)
+        b2 = self.layer3(x)
+        fc1 = self.fc(b1)
+        fc2 = slef.fc(b2)
+        x = torch.cat((fc1, fc2), dim=1)
+        out = self.outlayer(x)
+        return out
 
 
-
+model = CustomeCNNFashionMNIST(num_classes=num_cls)
 
 
 
