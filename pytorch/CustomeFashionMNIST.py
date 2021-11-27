@@ -54,7 +54,10 @@ def load_bst_model(bst_model_path, model, optimizer):
 train_and_val_dataset = torchvision.datasets.FashionMNIST(root=data_path, train=True,
                                                           download=True, transform=transforms.ToTensor())
 test_dataset = torchvision.datasets.FashionMNIST(root=data_path, train=False,
-                                                download=True, transform=transforms.ToTensor())                                                          
+                                                download=True, transform=transforms.ToTensor())
+# create dataloader
+train_dataset, val_dataset = torch.utils.data.random_split(dataset=train_val_dataset, lengths=[50000, 10000])
+train_dl = torch.utils.data.DataLoader(dataset=train_dataset, shuffle=True, )
 
 # define and implement network model
 """
@@ -113,12 +116,12 @@ class CustomeCNNFashionMNIST(nn.Module):
         return out
 
 
-model = CustomeCNNFashionMNIST(num_classes=num_cls)
-inp = torch.randn(1, 1, 28, 28)
-hl_transform = [ hl.transforms.Prune('Constant') ]
-model.eval()
-graph = hl.build_graph(model, inp, transforms=hl_transform)
-graph.theme = hl.graph.THEMES['blue'].copy()
+# model = CustomeCNNFashionMNIST(num_classes=num_cls)
+# inp = torch.randn(1, 1, 28, 28)
+# hl_transform = [ hl.transforms.Prune('Constant') ]
+# model.eval()
+# graph = hl.build_graph(model, inp, transforms=hl_transform)
+# graph.theme = hl.graph.THEMES['blue'].copy()
 
 
 
