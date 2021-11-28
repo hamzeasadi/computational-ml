@@ -1,4 +1,5 @@
 # import required modules
+import random
 import os
 import numpy as np
 from matplotlib import pyplot as plt
@@ -9,6 +10,13 @@ import wandb
 import torch
 from torchvision import datasets, transforms
 from torch import nn as nn
+
+
+# ensure deterministic behavior
+random.seed(42)
+np.random.seed(42)
+torch.manual_seed(42)
+torch.cuda.manual_seed_all(42)
 
 # define paths to save and load data and results
 data_path = os.path.join(os.getcwd(), 'data')
@@ -91,6 +99,8 @@ class WandbTestFashion(nn.Module):
         return out
 
 wandb.init(project='test', entity='hamzeasadi')
+wandb.log({'epoch': epoch, 'train_loss': train_loss})
+
 
 
 
