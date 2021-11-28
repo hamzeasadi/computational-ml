@@ -81,14 +81,16 @@ class WandbTestFashion(nn.Module):
         nn.Linear(in_features=200, out_features=num_cls),
         nn.Softmax(dim=1)
         )
+        self.flatten = nn.Flatten()
 
     def forward(self, x):
         x = self.layer1(x)
+        x = self.flatten(x)
         x = self.fc(x)
         out = self.outlayer(x)
         return out
 
-
+wandb.init(project='test', entity='hamzeasadi')
 
 
 
