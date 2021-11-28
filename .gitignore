@@ -2,3 +2,4 @@ ArtificialDatasets/myvenv/
 NaiveBayes/myenv/
 pytorch/myenv/
 pytorch/data/
+pytorch/wandb/
