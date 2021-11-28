@@ -74,7 +74,7 @@ class WandbTestFashion(nn.Module):
     """this is a simple model to test wandb application"""
     def __init__(self, num_cls=10):
         super().__init__()
-        self.layer1 = (
+        self.layer1 = nn.Sequential(
         nn.Conv2d(in_channels=1, out_channels=16, kernel_size=3,
                     stride=2, padding=1, padding_mode='zeros'),
         nn.BatchNorm2d(num_features=16),
@@ -107,7 +107,61 @@ model = WandbTestFashion(num_cls=hyper['num_cls']).to(hyper['device'])
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(params=model.parameters(), lr=wandb.config.lr)
 
+# log model parameters to wandb
 wandb.watch(model)
+
+# define and implement train function
+def train(model, optimizer, criterion, epochs, train_data, val_data,
+            checkpoint_path, best_model_path, min_val_error_in):
+
+    for epoch in range(epochs):
+        train_loss = 0.0
+        val_loss = 0.0
+        model.train()
+        for btc_idx, (btc_img, btc_label) in enumerate(train_data):
+            btc_img = btc_img.to(hyper['device'])
+            btc_label = btc_label.to(hyper['device'])
+            pre_cls = model(btc_img)
+            loss = criterion(pre_cls, btc_label)
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+            train_loss += (loss.item() - train_loss)/len(btc_label)
+
+        model.eval()
+        with torch.no_grad():
+            for btc_idx, (btc_img, btc_label) in enumerate(val_data):
+                btc_img = btc_img.to(hyper['device'])
+                btc_label = btc_label.to(hyper['device'])
+                pre_cls = model(btc_img)
+                loss = criterion(pre_cls, btc_label)
+                val_loss += (loss.item() - val_loss)/len(btc_label)
+
+        print(f"epoch={epoch+1}, train_loss={train_loss:.4f}, val_loss={val_loss:.4f}")
+        checkpoint_state = {'epoch':epoch+1, 'model_state_dict':model.state_dict(),
+                                'optimizer_state_dict':optimizer.state_dict(), 'min_val_error':val_loss}
+        if val_loss>min_val_error_in:
+            save_ckp(state=checkpoint_state, checkpoint_path=checkpoint_path,
+            best_model_path=best_model_path, is_best_model=True)
+            min_val_error_in = val_loss
+        else:
+            save_ckp(state=checkpoint_state, checkpoint_path=checkpoint_path,
+            best_model_path=best_model_path, is_best_model=False)
+
+        wandb.log(
+        {
+        'epoch':epoch,
+        'train_loss':train_loss,
+        'val_loss': val_loss
+        }
+        )
+
+
+train(model=model, train_data=train_dl, val_data=val_dl, optimizer=optimizer, criterion=criterion,
+        epochs=hyper['num_epochs'], checkpoint_path=checkpoint_path,
+        best_model_path=best_model_path, min_val_error_in=np.inf)
+
+
 
 
 
