@@ -17,10 +17,10 @@ best_model_name = f"wand-fashionMNIST-best-model.pt"
 best_model_path = os.path.join(data_path, 'best_model', best_model_name)
 checkpoint_path = os.path.join(data_path, 'checkpoint', checkpoint_name)
 
-
-
-
-
+# define data transforms
+transform = transforms.Compose(
+[transforms.ToTensor(), transforms.Normalize(mean=0.5, std=0.5)]
+)
 
 
 
