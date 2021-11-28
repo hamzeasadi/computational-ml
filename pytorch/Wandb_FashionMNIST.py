@@ -23,6 +23,12 @@ num_epochs=1, batch_size=100, lr=1e-3, num_cls=10,
 device=torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 )
 
+# define and implement checkpoint save functions
+def save_ckp(state, checkpoint_path, best_model_path, is_best_model):
+    torch.save(state, checkpoint_path)
+    if is_best_model:
+        shutil.copyfile(src=checkpoint_path, dst=best_model_path)
+
 # define data transforms
 transform = transforms.Compose(
 [transforms.ToTensor(), transforms.Normalize(mean=0.5, std=0.5)]
@@ -42,7 +48,8 @@ train_dl = torch.utils.data.DataLoader(dataset=train_dataset, shuffle=True,
 val_dl = torch.utils.data.DataLoader(dataset=val_dataset, shuffle=True,
                                     batch_size=hyper['batch_size'])
 test_dl = torch.utils.data.DataLoader(dataset=test_dataset, shuffle=True,
-                                     batch_size=hyper['batch_size'])                                    
+                                     batch_size=hyper['batch_size'])
+
 
 
 
