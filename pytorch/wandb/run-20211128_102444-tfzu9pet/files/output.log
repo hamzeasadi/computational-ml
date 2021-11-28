@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/hamzeasadi/python/computationalML/computational-ml/pytorch/Wandb_FashionMNIST.py", line 103, in <module>
+    wandb.log({'epoch': epoch, 'train_loss': train_loss})
+NameError: name 'epoch' is not defined

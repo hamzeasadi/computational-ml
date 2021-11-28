@@ -11,6 +11,7 @@ import torch
 from torchvision import datasets, transforms
 from torch import nn as nn
 
+wandb.login()
 
 # ensure deterministic behavior
 random.seed(42)
@@ -98,8 +99,15 @@ class WandbTestFashion(nn.Module):
         out = self.outlayer(x)
         return out
 
-wandb.init(project='test', entity='hamzeasadi')
-wandb.log({'epoch': epoch, 'train_loss': train_loss})
+wandb.init(name='test_run', project='test', entity='hamzeasadi')
+wandb.config.lr=hyper['lr']
+
+model = WandbTestFashion(num_cls=hyper['num_cls']).to(hyper['device'])
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(params=model.parameters(), lr=wandb.config.lr)
+
+
+
 
 
 

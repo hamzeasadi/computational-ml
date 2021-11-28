@@ -1,0 +1,22 @@
+{
+    "os": "macOS-11.5.2-x86_64-i386-64bit",
+    "python": "3.9.2",
+    "heartbeatAt": "2021-11-28T10:24:46.049534",
+    "startedAt": "2021-11-28T10:24:44.408018",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/hamzeasadi/python/computationalML/computational-ml/pytorch/Wandb_FashionMNIST.py",
+    "codePath": "pytorch/Wandb_FashionMNIST.py",
+    "git": {
+        "remote": "https://github.com/hamzeasadi/computational-ml.git",
+        "commit": "4d6ecf500d8bda3c871075571d34d384ff5e81c3"
+    },
+    "email": "hamzeasadi1@gmail.com",
+    "root": "/Users/hamzeasadi/python/computationalML/computational-ml",
+    "host": "4c175.local",
+    "username": "root",
+    "executable": "/Users/hamzeasadi/python/computationalML/computational-ml/pytorch/myenv/bin/python3"
+}
