@@ -12,7 +12,9 @@ from torchvision.transforms import transforms
 import shutil
 import hiddenlayer as hl
 from IPython.display import display, Image
+import wandb
 
+wandb.login()
 
 # define pathes
 data_path = os.path.join(os.getcwd(), 'data')
@@ -36,8 +38,8 @@ def save_ckp(state, ckp_path, is_best_model, bst_model_path):
 
 def load_ckp(ckp_path, model, optimizer):
     checkpoint = torch.load(ckp_path)
-    model.load_state_dict(checkpoint['model_state_dict'])
-    optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+    model.load_state_dict(checkpoint['model_state'])
+    optimizer.load_state_dict(checkpoint['optimizer_state'])
     epoch = checkpoint['epoch']
     min_val_error = checkpoint['min_val_error']
     return model, optimizer, epoch, min_val_error
@@ -169,15 +171,14 @@ def train(model, opt, criterion, train_data, val_data, epochs, ckp_path, bst_mdl
 
 
 
-train(model=model, opt=optimizer, criterion=criterion, train_data=train_dl,
-        val_data=val_dl, epochs=num_epochs, ckp_path=checkpoint_path,
-        bst_mdl_path=best_model_path, min_val_error_in=np.inf, is_best=False)
+# train(model=model, opt=optimizer, criterion=criterion, train_data=train_dl,
+#         val_data=val_dl, epochs=num_epochs, ckp_path=checkpoint_path,
+#         bst_mdl_path=best_model_path, min_val_error_in=np.inf, is_best=False)
 
 
-
-
-
-
+new_model = CustomeCNNFashionMNIST(num_classes=num_cls)
+model, optimizer, epoch, min_val_error = load_ckp(ckp_path=checkpoint_path, model=new_model, optimizer=optimizer)
+print(model)
 
 
 
