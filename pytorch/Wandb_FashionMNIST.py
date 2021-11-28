@@ -28,7 +28,7 @@ checkpoint_path = os.path.join(data_path, 'checkpoint', checkpoint_name)
 
 # define hyper parameters
 hyper = dict(
-num_epochs=1, batch_size=100, lr=1e-3, num_cls=10,
+num_epochs=10, batch_size=100, lr=1e-3, num_cls=10,
 device=torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 )
 
@@ -102,9 +102,13 @@ class WandbTestFashion(nn.Module):
 wandb.init(name='test_run', project='test', entity='hamzeasadi')
 wandb.config.lr=hyper['lr']
 
+# initialize the model and loss and optimizer
 model = WandbTestFashion(num_cls=hyper['num_cls']).to(hyper['device'])
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(params=model.parameters(), lr=wandb.config.lr)
+
+wandb.watch(model)
+
 
 
 
