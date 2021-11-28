@@ -20,7 +20,7 @@ checkpoint_path = os.path.join(data_path, 'checkpoint', checkpoint_name)
 # define hyper parameters
 hyper = dict(
 num_epochs=1, batch_size=100, lr=1e-3, num_cls=10,
-device=torch.device('cuda:0', if torch.cuda.is_available() else 'cpu')
+device=torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 )
 
 # define data transforms
@@ -36,7 +36,13 @@ train_dataset, val_dataset = torch.utils.data.random_split(dataset=train_val_dat
 test_dataset = datasets.FashionMNIST(root=data_path, train=False, download=True,
                                         transform=transform)
 
-
+# make a data loader for datasets
+train_dl = torch.utils.data.DataLoader(dataset=train_dataset, shuffle=True,
+                                        batch_size=hyper['batch_size'])
+val_dl = torch.utils.data.DataLoader(dataset=val_dataset, shuffle=True,
+                                    batch_size=hyper['batch_size'])
+test_dl = torch.utils.data.DataLoader(dataset=test_dataset, shuffle=True,
+                                     batch_size=hyper['batch_size'])                                    
 
 
 
