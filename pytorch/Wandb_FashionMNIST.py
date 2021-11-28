@@ -23,11 +23,21 @@ num_epochs=1, batch_size=100, lr=1e-3, num_cls=10,
 device=torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 )
 
-# define and implement checkpoint save functions
+# define and implement checkpoint save/load functions
 def save_ckp(state, checkpoint_path, best_model_path, is_best_model):
     torch.save(state, checkpoint_path)
     if is_best_model:
         shutil.copyfile(src=checkpoint_path, dst=best_model_path)
+
+def load_ckp(checkpoint_path, model, optimizer):
+    checkpoint = torch.load(checkpoint_path)
+    epoch = checkpoint['epoch']
+    min_val_error = checkpoint['min_val_error']
+    model = model.load_state_dict(checkpoint['model_state_dict'])
+    optimizer = optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+    return model, optimizer, epoch, min_val_error
+
+
 
 # define data transforms
 transform = transforms.Compose(
