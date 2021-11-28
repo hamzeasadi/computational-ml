@@ -22,6 +22,12 @@ transform = transforms.Compose(
 [transforms.ToTensor(), transforms.Normalize(mean=0.5, std=0.5)]
 )
 
+# download data and transform them
+train_val_dataset = datasets.FashionMNIST(root=data_path, train=True, download=True,
+                                        transform=transform)
+test_dataset = datasets.FashionMNIST(root=data_path, train=False, download=True,
+                                        transform=transform)
+                                                                                
 
 
 
