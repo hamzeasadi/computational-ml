@@ -17,6 +17,12 @@ best_model_name = f"wand-fashionMNIST-best-model.pt"
 best_model_path = os.path.join(data_path, 'best_model', best_model_name)
 checkpoint_path = os.path.join(data_path, 'checkpoint', checkpoint_name)
 
+# define hyper parameters
+hyper = dict(
+num_epochs=1, batch_size=100, lr=1e-3, num_cls=10,
+device=torch.device('cuda:0', if torch.cuda.is_available() else 'cpu')
+)
+
 # define data transforms
 transform = transforms.Compose(
 [transforms.ToTensor(), transforms.Normalize(mean=0.5, std=0.5)]
@@ -25,10 +31,10 @@ transform = transforms.Compose(
 # download data and transform them
 train_val_dataset = datasets.FashionMNIST(root=data_path, train=True, download=True,
                                         transform=transform)
+train_dataset, val_dataset = torch.utils.data.random_split(dataset=train_val_dataset,
+                                                            lengths=[50000, 10000])
 test_dataset = datasets.FashionMNIST(root=data_path, train=False, download=True,
                                         transform=transform)
-                                                                                
-
 
 
 
