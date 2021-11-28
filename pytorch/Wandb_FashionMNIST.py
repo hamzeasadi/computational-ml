@@ -60,6 +60,34 @@ val_dl = torch.utils.data.DataLoader(dataset=val_dataset, shuffle=True,
 test_dl = torch.utils.data.DataLoader(dataset=test_dataset, shuffle=True,
                                      batch_size=hyper['batch_size'])
 
+# define and implement the model
+class WandbTestFashion(nn.Module):
+    """this is a simple model to test wandb application"""
+    def __init__(self, num_cls=10):
+        super().__init__()
+        self.layer1 = (
+        nn.Conv2d(in_channels=1, out_channels=16, kernel_size=3,
+                    stride=2, padding=1, padding_mode='zeros'),
+        nn.BatchNorm2d(num_features=16),
+        nn.ReLU(),
+        nn.MaxPool2d(kernel_size=2, stride=2)
+        )
+        self.fc = nn.Sequential(
+        nn.Linear(in_features=7*7*16, out_features=200),
+        nn.BatchNorm1d(num_features=200),
+        nn.ReLU()
+        )
+        self.outlayer = nn.Sequential(
+        nn.Linear(in_features=200, out_features=num_cls),
+        nn.Softmax(dim=1)
+        )
+
+    def forward(self, x):
+        x = self.layer1(x)
+        x = self.fc(x)
+        out = self.outlayer(x)
+        return out
+
 
 
 

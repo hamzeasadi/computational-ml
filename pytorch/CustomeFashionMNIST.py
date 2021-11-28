@@ -14,7 +14,7 @@ import hiddenlayer as hl
 from IPython.display import display, Image
 import wandb
 
-wandb.login()
+
 
 # define pathes
 data_path = os.path.join(os.getcwd(), 'data')
