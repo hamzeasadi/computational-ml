@@ -7,3 +7,11 @@ import torch
 from torch import nn as nn
 import torchvision
 from torchvision.transforms import transforms
+
+
+
+def main():
+    pass
+
+if __name__ == '__main__':
+    main()
