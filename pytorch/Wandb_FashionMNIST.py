@@ -140,7 +140,7 @@ def train(model, optimizer, criterion, epochs, train_data, val_data,
         print(f"epoch={epoch+1}, train_loss={train_loss:.4f}, val_loss={val_loss:.4f}")
         checkpoint_state = {'epoch':epoch+1, 'model_state_dict':model.state_dict(),
                                 'optimizer_state_dict':optimizer.state_dict(), 'min_val_error':val_loss}
-        if val_loss>min_val_error_in:
+        if val_loss<min_val_error_in:
             save_ckp(state=checkpoint_state, checkpoint_path=checkpoint_path,
             best_model_path=best_model_path, is_best_model=True)
             min_val_error_in = val_loss
@@ -157,9 +157,9 @@ def train(model, optimizer, criterion, epochs, train_data, val_data,
         )
 
 
-train(model=model, train_data=train_dl, val_data=val_dl, optimizer=optimizer, criterion=criterion,
-        epochs=hyper['num_epochs'], checkpoint_path=checkpoint_path,
-        best_model_path=best_model_path, min_val_error_in=np.inf)
+# train(model=model, train_data=train_dl, val_data=val_dl, optimizer=optimizer, criterion=criterion,
+#         epochs=hyper['num_epochs'], checkpoint_path=checkpoint_path,
+#         best_model_path=best_model_path, min_val_error_in=np.inf)
 
 
 
