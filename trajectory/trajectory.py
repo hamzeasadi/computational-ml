@@ -38,10 +38,13 @@ class DataWrangling():
     Raises:
         ValueError: if sample_size is not a positive integer
     """
-    def __init__(self, data_path, sample_size, batch_size=100):
-        self.sample_size = sample_size
-        self.batch_size = batch_size
-        self.data_path = data_path
+    def __init__(self, data_path, sample_size: int, batch_size=100):
+        if (sample_size > 0 and isinstance(sample_size, int)):
+            self.sample_size = sample_size
+            self.batch_size = batch_size
+            self.data_path = data_path
+        else:
+            raise ValueError(f"Expected a positive integer for sample_size, Got {sample_size}")
 
     def __call__(self, new_sample_size, new_batch_size):
         self.sample_size = new_sample_size
@@ -49,12 +52,12 @@ class DataWrangling():
         print(f"A new sample size and batch size initiated")
 
     def loadData(self):
-        return pd.read_csv(self.data_path)
+        return pd.read_csv(self.data_path).values
 
     def dataSplit(self):
         data = self.loadData()
         X, Y = [], []
-        for sample in range(len(data)-self.sample_size):
+        for i in range(len(data)-self.sample_size):
             X.append(data[i:i+self.sample_size])
             Y.append(data[i+self.sample_size])
         return np.asarray(X), np.asarray(Y)
@@ -63,12 +66,12 @@ class DataWrangling():
     def preProcess(self, test_size=0.1):
         X_data, Y_data = self.dataSplit()
         X_train, X_test, y_train, y_test = train_test_split(X_data, Y_data, test_size=test_size, shuffle=True)
-        scale_x = StandardScaler()
-        scale_y = StandardScaler()
-        X_train = torch.from_numpy(scale_x.fit_transform(X_train))
-        y_train = torch.from_numpy(scale_y.fit_transform(y_train))
-        X_test = torch.from_numpy(scale_x.transform(X_test))
-        y_test = torch.from_numpy(scale_y.transform(y_test))
+        # scale_x = StandardScaler()
+        # scale_y = StandardScaler()
+        # X_train = torch.from_numpy(scale_x.fit_transform(X_train))
+        # y_train = torch.from_numpy(scale_y.fit_transform(y_train))
+        # X_test = torch.from_numpy(scale_x.transform(X_test))
+        # y_test = torch.from_numpy(scale_y.transform(y_test))
 
         return X_train, X_test, y_train, y_test
 
@@ -77,11 +80,9 @@ class DataWrangling():
 
 
 def main():
-    mydata = loadData(data_path)
-    data = mydata.values
-    X_data, Y_data = dataSampling(data=data, sample_size=4)
-    X_train, X_test, y_train, y_test = train_test_split(X_data, Y_data, test_size=0.1, shuffle=True)
-    print(np.shape(X_train), np.shape(X_test),np.shape(y_train), np.shape(y_test))
+    DataPipleline = DataWrangling(data_path=data_path, sample_size=sample_size, batch_size=batch_size)
+    X_train, X_test, y_train, y_test = DataPipleline.preProcess()
+    print(np.shape(X_train))
 
 
 
