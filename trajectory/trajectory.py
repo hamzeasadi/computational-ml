@@ -29,6 +29,14 @@ def dataSampling(data, sample_size):
     Raises:
         ValueError: if the sample size is not an positive integer
     """
+    if sample_size > 0:
+        newdata = []
+        for i in range(len(data)-sample_size):
+            newdata.append(data[i:sample_size])
+        return newdata
+    else:
+        raise ValueError(f"Expected a positive integer for sample_size, Got {sample_size}")
+
 
 
 def main():
