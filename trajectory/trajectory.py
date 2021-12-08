@@ -17,6 +17,19 @@ def loadData(dataPath):
     data = pd.read_csv(dataPath)
     return data
 
+# define dataSampling(data, sample_size)
+def dataSampling(data, sample_size):
+    """this function takes a numpy multidimentional array and return another multidimentional
+    array with (n, sample_size)
+    args:
+        data: multidimentional array
+        sample_size: a positive integer
+    return:
+        newdata: a new multidimentional array with (n, sample_size) shape
+    Raises:
+        ValueError: if the sample size is not an positive integer
+    """
+
 
 def main():
     mydata = loadData(data_path)
