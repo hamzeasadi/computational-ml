@@ -8,8 +8,13 @@ from torch import nn as nn
 import torchvision
 from torchvision.transforms import transforms
 import os
+import random
 
 
+# set random seeds to for consistant algorithm performance check
+random.seed(42)
+np.random.seed(42)
+torch.manual_seed(42)
 
 # define loadData function
 data_path = os.path.join(os.path.dirname(os.getcwd()), 'data', 'leader100turn.csv')
@@ -44,9 +49,8 @@ def dataSampling(data, sample_size):
 def main():
     mydata = loadData(data_path)
     data = mydata.values
-    # print(data)
     samples = dataSampling(data=data, sample_size=5)
-    print(np.shape(samples))
+    # dataset = np.shuffle(dataset)
 
 
 
