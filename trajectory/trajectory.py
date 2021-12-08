@@ -39,6 +39,9 @@ class DataWrangling():
         self.batch_size = new_batch_size
         print(f"A new sample size and batch size initiated")
 
+    def loadData(self):
+        return pd.read_csv(self.data_path)
+
 
 
 
