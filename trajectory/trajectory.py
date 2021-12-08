@@ -21,7 +21,14 @@ torch.manual_seed(42)
 
 # define a class for data loadin and preprocessing
 class DataWrangling():
-    pass
+    """this is a class that takes data path, sample_sizeas,and batch size as input and retun train and test data loader
+    args:
+        data: the data path
+    methods:
+
+    Raises:
+        ValueError: if sample_size is not a positive integer
+    """
 
 # define loadData function
 data_path = os.path.join(os.path.dirname(os.getcwd()), 'data', 'leader100turn.csv')
