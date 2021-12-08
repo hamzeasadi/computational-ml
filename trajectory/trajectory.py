@@ -85,7 +85,18 @@ class DataWrangling():
 
 # define a class to make our lstm model
 class LstmModel(nn.Module):
-    pass
+    """ a simple basic lstm model that predict the 3 continous output
+        args:
+            input_dim: the input shape of data
+            hidden_size: hidden size of lstm cell
+            fully_conn_size: the fully connected layer size of the network.
+            num_output: the number of output for the model
+
+        Returns:
+            it will be a blueprint for creating our model
+        Raises:
+            None
+    """
 
 
 
