@@ -52,7 +52,9 @@ class DataWrangling():
         print(f"A new sample size and batch size initiated")
 
     def loadData(self):
-        return pd.read_csv(self.data_path).values
+        nonNormalized_data = pd.read_csv(self.data_path).values
+        NormalizedData = (nonNormalized_data - nonNormalized_data.mean())/nonNormalized_data.std()
+        return nonNormalizedData
 
     def dataSplit(self):
         data = self.loadData()
