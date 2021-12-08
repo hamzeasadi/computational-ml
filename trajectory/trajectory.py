@@ -42,6 +42,15 @@ class DataWrangling():
     def loadData(self):
         return pd.read_csv(self.data_path)
 
+    def dataSplit(self):
+        data = self.loadData()
+        X, Y = [], []
+        for sample in range(len(data)-self.sample_size):
+            X.append(data[i:i+self.sample_size])
+            Y.append(data[i+self.sample_size])
+        return np.asarray(X), np.asarray(Y)
+
+
 
 
 
