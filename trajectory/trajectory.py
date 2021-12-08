@@ -31,9 +31,11 @@ def dataSampling(data, sample_size):
     """
     if sample_size > 0:
         newdata = []
+        print(len(data))
         for i in range(len(data)-sample_size):
-            newdata.append(data[i:sample_size])
-        return newdata
+            newdata.append(data[i:i+sample_size])
+            # print(data[i:i+sample_size])
+        return np.asarray(newdata)
     else:
         raise ValueError(f"Expected a positive integer for sample_size, Got {sample_size}")
 
@@ -41,15 +43,11 @@ def dataSampling(data, sample_size):
 
 def main():
     mydata = loadData(data_path)
-    print(mydata.describe())
-    # X = mydata.iloc[:, :-1]
-    # Y = mydata.iloc[:, 5:6]
-    # print(Y)
-    # print(mydata.head(5))
-    # plt.style.use('ggplot')
-    # mydata.plot(label='CLOSE', title='Star Bucks Stock Volume')
-    sns.pairplot(data=mydata)
-    plt.show()
+    data = mydata.values
+    # print(data)
+    samples = dataSampling(data=data, sample_size=5)
+    print(np.shape(samples))
+
 
 
 
