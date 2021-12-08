@@ -34,6 +34,11 @@ class DataWrangling():
         self.batch_size = batch_size
         self.data_path = data_path
 
+    def __call__(self, new_sample_size, new_batch_size):
+        self.sample_size = new_sample_size
+        self.batch_size = new_batch_size
+        print(f"A new sample size and batch size initiated")
+
 
 
 
