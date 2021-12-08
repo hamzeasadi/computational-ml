@@ -52,9 +52,9 @@ class DataWrangling():
         print(f"A new sample size and batch size initiated")
 
     def loadData(self):
-        nonNormalized_data = pd.read_csv(self.data_path).values
+        nonNormalized_data = pd.read_csv(self.data_path)
         NormalizedData = (nonNormalized_data - nonNormalized_data.mean())/nonNormalized_data.std()
-        return nonNormalizedData
+        return NormalizedData.values
 
     def dataSplit(self):
         data = self.loadData()
@@ -68,23 +68,32 @@ class DataWrangling():
     def preProcess(self, test_size=0.1):
         X_data, Y_data = self.dataSplit()
         X_train, X_test, y_train, y_test = train_test_split(X_data, Y_data, test_size=test_size, shuffle=True)
-        # scale_x = StandardScaler()
-        # scale_y = StandardScaler()
-        # X_train = torch.from_numpy(scale_x.fit_transform(X_train))
-        # y_train = torch.from_numpy(scale_y.fit_transform(y_train))
-        # X_test = torch.from_numpy(scale_x.transform(X_test))
-        # y_test = torch.from_numpy(scale_y.transform(y_test))
+        train_dataset, test_dataset = [], []
+        for i in range(len(y_train)):
+            train_dataset.append([X_train[i], y_train[i]])
+        for i in range(len(y_test)):
+            test_dataset.append([X_test[i], y_test[i]])
+        trainLoader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=self.batch_size, shuffle=True)
+        testLoader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=self.batch_size, shuffle=True)
+        # X_train = torch.from_numpy(X_train)
+        # y_train = torch.from_numpy(y_train)
+        # X_test = torch.from_numpy(X_test)
+        # y_test = torch.from_numpy(y_test)
 
-        return X_train, X_test, y_train, y_test
+        return trainLoader, testLoader
 
+
+# define a class to make our lstm model
+class LstmModel(nn.Module):
+    pass
 
 
 
 
 def main():
     DataPipleline = DataWrangling(data_path=data_path, sample_size=sample_size, batch_size=batch_size)
-    X_train, X_test, y_train, y_test = DataPipleline.preProcess()
-    print(np.shape(X_train))
+    trainDataLoader, testDataLoader = DataPipleline.preProcess()
+
 
 
 
