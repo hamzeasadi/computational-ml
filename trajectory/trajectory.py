@@ -24,6 +24,9 @@ epochs = 100
 learning_rate = 1e-2
 sample_size = 4
 
+# define paths
+data_path = os.path.join(os.path.dirname(os.getcwd()), 'data', 'leader100turn.csv')
+
 
 # define a class for data loadin and preprocessing
 class DataWrangling():
@@ -70,37 +73,6 @@ class DataWrangling():
         return X_train, X_test, y_train, y_test
 
 
-
-
-
-# define loadData function
-data_path = os.path.join(os.path.dirname(os.getcwd()), 'data', 'leader100turn.csv')
-def loadData(dataPath):
-    data = pd.read_csv(dataPath)
-    return data
-
-# define dataSampling(data, sample_size)
-def dataSampling(data, sample_size):
-    """this function takes a numpy multidimentional array and return another multidimentional
-    array with (n, sample_size)
-    args:
-        data: multidimentional array
-        sample_size: a positive integer
-    return:
-        newdata: a new multidimentional array with (n, sample_size) shape
-    Raises:
-        ValueError: if the sample size is not an positive integer
-    """
-    if sample_size > 0:
-        X = []
-        Y = []
-        for i in range(len(data)-sample_size):
-            X.append(data[i:i+sample_size])
-            Y.append(data[i+sample_size])
-            # print(data[i:i+sample_size])
-        return np.asarray(X), np.asarray(Y)
-    else:
-        raise ValueError(f"Expected a positive integer for sample_size, Got {sample_size}")
 
 
 
