@@ -18,14 +18,21 @@ random.seed(42)
 np.random.seed(42)
 torch.manual_seed(42)
 
+# define pathes
+data_path = os.path.join(os.path.dirname(os.getcwd()), 'data')
+dataset_path = os.path.join(os.path.dirname(os.getcwd()), 'leader100turn.csv')
+checkpoint_name = f"checkpoint-lstm-model-{0}.pt"
+model_name = f"best-lstm-model-{0}.pt"
+checkpoint_path = os.path.join(data_path, 'checkpoint', checkpoint_name)
+best_model_path = os.path.join(data_path, 'best_model', model_name)
+
 # define hyper parameters
 batch_size = 100
 epochs = 100
 learning_rate = 1e-2
 sample_size = 4
 
-# define paths
-data_path = os.path.join(os.path.dirname(os.getcwd()), 'data', 'leader100turn.csv')
+
 
 
 # define a class for data loadin and preprocessing
@@ -97,6 +104,12 @@ class LstmModel(nn.Module):
         Raises:
             None
     """
+    def __init__(self, input_shape, hidden_size, fully_conn_size, num_outputs):
+        super(LstmModel, self).__init__()
+
+
+    def forward(self, x):
+        pass
 
 
 
