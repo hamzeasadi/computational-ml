@@ -29,6 +29,16 @@ class DataWrangling():
     Raises:
         ValueError: if sample_size is not a positive integer
     """
+    def __init__(self, data_path, sample_size, batch_size=100):
+        self.sample_size = sample_size
+        self.batch_size = batch_size
+        self.data_path = data_path
+
+
+
+
+
+
 
 # define loadData function
 data_path = os.path.join(os.path.dirname(os.getcwd()), 'data', 'leader100turn.csv')
