@@ -11,6 +11,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 import os
 import random
+ImportError shutil
 
 
 # set random seeds to for consistant algorithm performance check
@@ -32,6 +33,7 @@ epochs = 100
 learning_rate = 1e-2
 sample_size = 4
 num_outputs = 3
+min_val_error = np.inf
 
 # define and implement save and load checkpoints
 def save_ckp(state, ckp_path, is_best_model, bst_model_path):
@@ -39,7 +41,21 @@ def save_ckp(state, ckp_path, is_best_model, bst_model_path):
     if is_best_model:
         shutil.copyfile(src=ckp_path, dst=bst_model_path)
 
+def load_ckp(ckp_path, model, optimizer):
+    checkpoint = torch.load(ckp_path)
+    model.load_state_dict(checkpoint['model_state'])
+    optimizer.load_state_dict(checkpoint['optimizer_state'])
+    epoch = checkpoint['epoch']
+    min_val_error = checkpoint['min_val_error']
+    return model, optimizer, epoch, min_val_error
 
+def load_bst_model(bst_model_path, model, optimizer):
+        checkpoint = torch.load(bst_model_path)
+        model.load_state_dict(checkpoint['model_state_dict'])
+        optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        epoch = checkpoint['epoch']
+        min_val_error = checkpoint['min_val_error']
+        return model, optimizer, epoch, min_val_error
 
 
 # define a class for data loadin and preprocessing
@@ -68,31 +84,32 @@ class DataWrangling():
     def loadData(self):
         nonNormalized_data = pd.read_csv(self.data_path)
         NormalizedData = (nonNormalized_data - nonNormalized_data.mean())/nonNormalized_data.std()
+
         return NormalizedData.values
 
     def dataSplit(self):
         data = self.loadData()
+
         X, Y = [], []
         for i in range(len(data)-self.sample_size):
             X.append(data[i:i+self.sample_size])
             Y.append(data[i+self.sample_size])
+
         return np.asarray(X), np.asarray(Y)
 
 
     def preProcess(self, test_size=0.1):
         X_data, Y_data = self.dataSplit()
         X_train, X_test, y_train, y_test = train_test_split(X_data, Y_data, test_size=test_size, shuffle=True)
+
         train_dataset, test_dataset = [], []
         for i in range(len(y_train)):
             train_dataset.append([X_train[i], y_train[i]])
         for i in range(len(y_test)):
             test_dataset.append([X_test[i], y_test[i]])
+
         trainLoader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=self.batch_size, shuffle=True)
         testLoader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=self.batch_size, shuffle=True)
-        # X_train = torch.from_numpy(X_train)
-        # y_train = torch.from_numpy(y_train)
-        # X_test = torch.from_numpy(X_test)
-        # y_test = torch.from_numpy(y_test)
 
         return trainLoader, testLoader
 
