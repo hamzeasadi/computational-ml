@@ -18,6 +18,12 @@ random.seed(42)
 np.random.seed(42)
 torch.manual_seed(42)
 
+# define hyper parameters
+batch_size = 100
+epochs = 100
+learning_rate = 1e-2
+sample_size = 4
+
 
 # define a class for data loadin and preprocessing
 class DataWrangling():
@@ -51,7 +57,17 @@ class DataWrangling():
         return np.asarray(X), np.asarray(Y)
 
 
+    def preProcess(self, test_size=0.1):
+        X_data, Y_data = self.dataSplit()
+        X_train, X_test, y_train, y_test = train_test_split(X_data, Y_data, test_size=test_size, shuffle=True)
+        scale_x = StandardScaler()
+        scale_y = StandardScaler()
+        X_train = torch.from_numpy(scale_x.fit_transform(X_train))
+        y_train = torch.from_numpy(scale_y.fit_transform(y_train))
+        X_test = torch.from_numpy(scale_x.transform(X_test))
+        y_test = torch.from_numpy(scale_y.transform(y_test))
 
+        return X_train, X_test, y_train, y_test
 
 
 
