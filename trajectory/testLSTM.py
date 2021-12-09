@@ -37,9 +37,8 @@ hidden_size =2
 # define loadData function
 def loadData(data_path):
     df = pd.read_csv(data_path, index_col = 'Date', parse_dates=True)
-    plt.style.use('ggplot')
-    # df['Volume'].plot(label='CLOSE', title='Star Bucks Stock Volume')
-    # plt.show()
+    
+
 
 
 

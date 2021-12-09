@@ -161,17 +161,8 @@ def EntropyCal(*x):
 def main():
     # DataPipleline = DataWrangling(data_path=data_path, sample_size=sample_size, batch_size=batch_size)
     # trainDataLoader, testDataLoader = DataPipleline.preProcess()
-    df = pd.read_csv(os.path.join(data_path, 'SBUX.csv'), index_col = 'Date', parse_dates=True)
-    plt.style.use('ggplot')
-    # df['Volume'].plot(label='CLOSE', title='Star Bucks Stock Volume')
-    # plt.show()
-    X = df.iloc[:, :-1]
-    y = df.iloc[:, 5:6]
-    # print(f"x-shape = {np.shape(X)}, y-shape = {np.shape(y)}")
-    mm = MinMaxScaler()
-    ss = StandardScaler()
-    X_ss = ss.fit_transform(X)
-    y_mm = mm.fit_transform(y)
+
+
 
     X_train = X_ss[:200, :]
     X_test = X_ss[200:, :]
