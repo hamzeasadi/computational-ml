@@ -37,7 +37,13 @@ hidden_size =2
 # define loadData function
 def loadData(data_path):
     df = pd.read_csv(data_path, index_col = 'Date', parse_dates=True)
-    
+    X = df.iloc[:, :-1]
+    y = df.iloc[:, 5:6]
+    # print(f"x-shape = {np.shape(X)}, y-shape = {np.shape(y)}")
+    mm = MinMaxScaler()
+    ss = StandardScaler()
+    X_ss = ss.fit_transform(X)
+    y_mm = mm.fit_transform(y)
 
 
 
