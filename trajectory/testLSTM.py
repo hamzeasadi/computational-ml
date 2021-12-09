@@ -24,7 +24,7 @@ torch.manual_seed(42)
 
 # define pathes
 data_path = os.path.join(os.path.dirname(os.getcwd()), 'data')
-dataset_path = os.path.join(os.path.dirname(os.getcwd()), 'SBUX.csv')
+dataset_path = os.path.join(data_path, 'SBUX.csv')
 
 # define hyper parameters
 epochs = 1
@@ -33,6 +33,7 @@ num_classes = 1
 num_layers = 2
 input_size = 5
 hidden_size =2
+sequence_length = 1
 
 # define loadData function
 def loadData(data_path):
@@ -109,7 +110,7 @@ def train(model, data, y_train, test_data, y_test, opt, criterion, epochs):
 
         print(f"train-loss = {train_loss}, eval_loss = {eval_loss}")
 
-model = LSTM1(num_classes=1, input_size=input_size, hidden_size=hidden_size, num_layers=num_layers, seq_length=1)
+model = LSTM1(num_classes=1, input_size=input_size, hidden_size=hidden_size, num_layers=num_layers, seq_length=seq_length)
 # define model criterion and optimizer
 criterion = nn.MSELoss()
 optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
@@ -117,6 +118,8 @@ optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
 
 def main():
     X_train_tensors_final, X_test_tensors_final, y_train_tensors, y_test_tensors = loadData(data_path=dataset_path)
+    train(model=model, data=X_test_tensors_final, y_train=y_test_tensors, test_data=X_test_tensors_final,
+    y_test=y_test_tensors, opt=optimizer, criterion=criterion, epochs=epochs)
 
 
 if __name__ == '__main__':
