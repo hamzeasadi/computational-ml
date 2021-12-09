@@ -14,8 +14,10 @@ import random
 import shutil
 import math
 from torch.autograd import Variable
+from torchsummary import summary
+import wandb
 
-
+wandb.login()
 
 # set random seeds to for consistant algorithm performance check
 random.seed(42)
@@ -30,7 +32,7 @@ dataset_path = os.path.join(data_path, 'SBUX.csv')
 epochs = 1
 learning_rate = 1e-2
 num_classes = 1
-num_layers = 2
+num_layers = 1
 input_size = 5
 hidden_size =2
 seq_length = 1
@@ -110,6 +112,11 @@ def train(model, data, y_train, test_data, y_test, opt, criterion, epochs):
 
         print(f"train-loss = {train_loss}, eval_loss = {eval_loss}")
 
+
+# wandb configuration
+wandb.init(name='lstmTest', project='lstmTest', entity='hamzeasadi')
+wandb.Config.lr = learning_rate
+
 model = LSTM1(num_classes=1, input_size=input_size, hidden_size=hidden_size, num_layers=num_layers, seq_length=seq_length)
 # define model criterion and optimizer
 criterion = nn.MSELoss()
@@ -118,9 +125,12 @@ optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
 
 def main():
     X_train_tensors_final, X_test_tensors_final, y_train_tensors, y_test_tensors = loadData(data_path=dataset_path)
-    # train(model=model, data=X_train_tensors_final, y_train=y_train_tensors, test_data=X_test_tensors_final,
-    # y_test=y_test_tensors, opt=optimizer, criterion=criterion, epochs=epochs)
-    print(model)
+    train(model=model, data=X_train_tensors_final, y_train=y_train_tensors, test_data=X_test_tensors_final,
+    y_test=y_test_tensors, opt=optimizer, criterion=criterion, epochs=epochs)
+
+    # print("Training Shape", X_train_tensors_final.shape, y_train_tensors.shape)
+    # print("Testing Shape", X_test_tensors_final.shape, y_test_tensors.shape)
+    # print(model)
 
 
 if __name__ == '__main__':
