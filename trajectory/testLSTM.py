@@ -50,6 +50,11 @@ def loadData(data_path):
     y_train = y_mm[:200, :]
     y_test = y_mm[200:, :]
 
+    X_train_tensors = Variable(torch.Tensor(X_train))
+    X_test_tensors = Variable(torch.Tensor(X_test))
+    y_train_tensors = Variable(torch.Tensor(y_train))
+    y_test_tensors = Variable(torch.Tensor(y_test))
+
 
 
 # define lstm model and implement
