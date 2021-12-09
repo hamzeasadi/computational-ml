@@ -150,30 +150,7 @@ def EntropyCal(*x):
     print(e)
 
 
-class LSTM1(nn.Module):
-    """simple lstm"""
-    def __init__(self, num_classes, input_size, hidden_size, num_layers, seq_length):
-        super(LSTM1, self).__init__()
-        self.num_classes = num_classes
-        self.hidden_size = hidden_size
-        self.hidden_size = hidden_size
-        self.num_layers = num_layers
-        self.seq_length = seq_length
-        self.lstm = nn.LSTM(input_size=input_size, hidden_size=hidden_size, num_layers=num_layers, batch_first=True)
-        self.fc_1 = nn.Linear(in_features=hidden_size, out_features=128)
-        self.fc = nn.Linear(in_features=128, out_features=num_classes)
-        self.relu = nn.ReLU()
 
-    def forward(self, x):
-        h_0 = Variable(torch.randn(self.num_layers, x.size(0), self.hidden_size))
-        c_0 = Variable(torch.randn(self.num_layers, x.size(0), self.hidden_size))
-        output, (hn, cn) = self.lstm(x, (h_0, c_0))
-        hn = hn.view(-1, self.hidden_size)
-        out = self.relu(hn)
-        out = self.fc_1(out)
-        out = self.relu(out)
-        out = self.fc(out)
-        return out
 
 model = LSTM1(num_classes=1, input_size=input_size, hidden_size=hidden_size, num_layers=num_layers, seq_length=1)
 # define model criterion and optimizer
