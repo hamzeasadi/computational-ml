@@ -33,7 +33,7 @@ num_classes = 1
 num_layers = 2
 input_size = 5
 hidden_size =2
-sequence_length = 1
+seq_length = 1
 
 # define loadData function
 def loadData(data_path):
@@ -118,8 +118,9 @@ optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
 
 def main():
     X_train_tensors_final, X_test_tensors_final, y_train_tensors, y_test_tensors = loadData(data_path=dataset_path)
-    train(model=model, data=X_test_tensors_final, y_train=y_test_tensors, test_data=X_test_tensors_final,
-    y_test=y_test_tensors, opt=optimizer, criterion=criterion, epochs=epochs)
+    # train(model=model, data=X_train_tensors_final, y_train=y_train_tensors, test_data=X_test_tensors_final,
+    # y_test=y_test_tensors, opt=optimizer, criterion=criterion, epochs=epochs)
+    print(model)
 
 
 if __name__ == '__main__':
