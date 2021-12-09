@@ -55,6 +55,11 @@ def loadData(data_path):
     y_train_tensors = Variable(torch.Tensor(y_train))
     y_test_tensors = Variable(torch.Tensor(y_test))
 
+    X_train_tensors_final = torch.reshape(X_train_tensors, shape=(X_train_tensors.shape[0], 1, X_train_tensors.shape[1]))
+    X_test_tensors_final = torch.reshape(X_test_tensors, shape=(X_test_tensors.shape[0], 1, X_test_tensors.shape[1]))
+
+    
+
 
 
 # define lstm model and implement
