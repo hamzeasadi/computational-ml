@@ -152,30 +152,9 @@ def EntropyCal(*x):
 
 
 
-model = LSTM1(num_classes=1, input_size=input_size, hidden_size=hidden_size, num_layers=num_layers, seq_length=1)
-# define model criterion and optimizer
-criterion = nn.MSELoss()
-optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
 
-def train(model, data, y_train, test_data, y_test, opt, criterion, epochs):
-    for epoch in range(epochs):
-        train_loss = 0.0
-        eval_loss = 0.0
-        model.train()
-        pre = model(data)
-        print(pre.shape, y_train.shape)
-        loss = criterion(pre, y_train)
-        opt.zero_grad()
-        loss.backward()
-        opt.step()
-        train_loss = loss.item()
-        model.eval()
-        with torch.no_grad():
-            pre_ = model(test_data)
-            loss_ = criterion(pre_, y_test)
-            eval_loss = loss_.item()
 
-        print(f"train-loss = {train_loss}, eval_loss = {eval_loss}")
+
 
 
 
