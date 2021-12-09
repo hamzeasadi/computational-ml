@@ -111,7 +111,13 @@ def train(model, data, y_train, test_data, y_test, opt, criterion, epochs):
             eval_loss = loss_.item()
 
         print(f"train-loss = {train_loss}, eval_loss = {eval_loss}")
-
+        wandb.log(
+        {
+        'epoch':epoch,
+        'train_loss':train_loss,
+        'eval_loss': eval_loss
+        }
+        )
 
 # wandb configuration
 wandb.init(name='lstmTest', project='lstmTest', entity='hamzeasadi')
@@ -122,6 +128,8 @@ model = LSTM1(num_classes=1, input_size=input_size, hidden_size=hidden_size, num
 criterion = nn.MSELoss()
 optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
 
+# wandb watch model
+wandb.watch(model)
 
 def main():
     X_train_tensors_final, X_test_tensors_final, y_train_tensors, y_test_tensors = loadData(data_path=dataset_path)
