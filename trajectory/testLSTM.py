@@ -111,6 +111,7 @@ def train(model, data, y_train, test_data, y_test, opt, criterion, epochs):
             eval_loss = loss_.item()
 
         print(f"train-loss = {train_loss}, eval_loss = {eval_loss}")
+        # wandb log information
         wandb.log(
         {
         'epoch':epoch,
