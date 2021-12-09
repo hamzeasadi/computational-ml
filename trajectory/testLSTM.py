@@ -45,6 +45,10 @@ def loadData(data_path):
     X_ss = ss.fit_transform(X)
     y_mm = mm.fit_transform(y)
 
+    X_train = X_ss[:200, :]
+    X_test = X_ss[200:, :]
+    y_train = y_mm[:200, :]
+    y_test = y_mm[200:, :]
 
 
 
