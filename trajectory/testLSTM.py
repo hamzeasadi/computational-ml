@@ -24,4 +24,12 @@ torch.manual_seed(42)
 
 # define pathes
 data_path = os.path.join(os.path.dirname(os.getcwd()), 'data')
-dataset_path = os.path.join(os.path.dirname(os.getcwd()), 'S.csv')
+dataset_path = os.path.join(os.path.dirname(os.getcwd()), 'SBUX.csv')
+
+# define hyper parameters
+epochs = 1
+learning_rate = 1e-2
+num_classes = 1
+num_layers = 2
+input_size = 5
+hidden_size =2
