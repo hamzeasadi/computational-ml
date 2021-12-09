@@ -21,3 +21,7 @@ from torch.autograd import Variable
 random.seed(42)
 np.random.seed(42)
 torch.manual_seed(42)
+
+# define pathes
+data_path = os.path.join(os.path.dirname(os.getcwd()), 'data')
+dataset_path = os.path.join(os.path.dirname(os.getcwd()), 'S.csv')
