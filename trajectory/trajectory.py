@@ -149,10 +149,11 @@ class LstmModel(nn.Module):
 def main():
     # DataPipleline = DataWrangling(data_path=data_path, sample_size=sample_size, batch_size=batch_size)
     # trainDataLoader, testDataLoader = DataPipleline.preProcess()
-    lstm = nn.LSTM(input_size=3, hidden_size=10, batch_first=True)
+    lstm = nn.LSTM(input_size=3, hidden_size=10, batch_first=True, num_layers=2)
     input_shape = torch.randn(100, 4, 3)
-    output, h = lstm(input_shape)
+    output, (h1, h2) = lstm(input_shape)
     print(output.size())
+    print(f"h1 shape = {h1.size()}, h2 shape = {h2.size()}")
 
 
 
@@ -160,17 +161,8 @@ def main():
 
     # print(X_train_tensors.shape)
 
-    train(model=model, data=X_train_tensors_final, y_train=y_train_tensors, test_data=X_test_tensors_final,
-        y_test=y_test_tensors, opt=optimizer, criterion=criterion, epochs=1)
-
-
-
-
-
-
-
-
-
+    # train(model=model, data=X_train_tensors_final, y_train=y_train_tensors, test_data=X_test_tensors_final,
+    #     y_test=y_test_tensors, opt=optimizer, criterion=criterion, epochs=1)
 
 
 
