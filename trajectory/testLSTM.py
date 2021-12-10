@@ -29,7 +29,7 @@ data_path = os.path.join(os.path.dirname(os.getcwd()), 'data')
 dataset_path = os.path.join(data_path, 'SBUX.csv')
 
 # define hyper parameters
-epochs = 1
+epochs = 400
 learning_rate = 1e-2
 num_classes = 1
 num_layers = 1
@@ -98,19 +98,19 @@ def train(model, data, y_train, test_data, y_test, opt, criterion, epochs):
         eval_loss = 0.0
         model.train()
         pre = model(data)
-        print(pre.shape, y_train.shape)
+        # print(pre.shape, y_train.shape)
         loss = criterion(pre, y_train)
         opt.zero_grad()
         loss.backward()
         opt.step()
-        train_loss = loss.item()
+        train_loss = loss.item()/len(y_train)
         model.eval()
         with torch.no_grad():
             pre_ = model(test_data)
             loss_ = criterion(pre_, y_test)
-            eval_loss = loss_.item()
+            eval_loss = loss_.item()/len(y_test)
 
-        print(f"train-loss = {train_loss}, eval_loss = {eval_loss}")
+        print(f"epoch = {epoch}, train-loss = {train_loss}, eval_loss = {eval_loss}")
         # wandb log information
         wandb.log(
         {

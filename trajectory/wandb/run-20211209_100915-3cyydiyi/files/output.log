@@ -1,0 +1,800 @@
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.435996413230896, eval_loss = 0.07682549953460693
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.1928388476371765, eval_loss = 0.012556217610836029
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.06968860328197479, eval_loss = 0.03988364338874817
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.04512277618050575, eval_loss = 0.13309089839458466
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.08909222483634949, eval_loss = 0.2050740271806717
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.12627586722373962, eval_loss = 0.21061357855796814
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.14661255478858948, eval_loss = 0.18528810143470764
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.12503665685653687, eval_loss = 0.14350195229053497
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0949709415435791, eval_loss = 0.0971115231513977
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0672723650932312, eval_loss = 0.0578712522983551
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.04495101049542427, eval_loss = 0.028987176716327667
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.039558496326208115, eval_loss = 0.014790273271501064
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.04446400701999664, eval_loss = 0.010016640648245811
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.05439944192767143, eval_loss = 0.009854351170361042
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.06424301117658615, eval_loss = 0.010485352948307991
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.06943599879741669, eval_loss = 0.010832063853740692
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.06888040155172348, eval_loss = 0.009932042099535465
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.06300043314695358, eval_loss = 0.010532432235777378
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.05495469644665718, eval_loss = 0.013171856291592121
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.047299571335315704, eval_loss = 0.018315760418772697
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.040894556790590286, eval_loss = 0.028285544365644455
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03872213512659073, eval_loss = 0.039841677993535995
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.04035581275820732, eval_loss = 0.052323296666145325
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.043459199368953705, eval_loss = 0.06019170209765434
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.046372443437576294, eval_loss = 0.0653604045510292
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.04767204448580742, eval_loss = 0.06617338955402374
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.04775036498904228, eval_loss = 0.06478051841259003
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.04744468629360199, eval_loss = 0.05908413976430893
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.04359281435608864, eval_loss = 0.0498209185898304
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.042224906384944916, eval_loss = 0.03888191655278206
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03992931544780731, eval_loss = 0.03010260872542858
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.038673534989356995, eval_loss = 0.024784836918115616
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03875938057899475, eval_loss = 0.019674744457006454
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03963590785861015, eval_loss = 0.017621422186493874
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.04119424521923065, eval_loss = 0.01567649468779564
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.04090024158358574, eval_loss = 0.014359613880515099
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0412067286670208, eval_loss = 0.014670893549919128
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.04174741730093956, eval_loss = 0.016435852274298668
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.04046190157532692, eval_loss = 0.01999490149319172
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03964017331600189, eval_loss = 0.02157844416797161
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03814544156193733, eval_loss = 0.02557983249425888
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03760281205177307, eval_loss = 0.030493559315800667
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.038101620972156525, eval_loss = 0.03342737630009651
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03723343834280968, eval_loss = 0.03886337950825691
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03868980333209038, eval_loss = 0.03479582816362381
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03777896612882614, eval_loss = 0.03568783402442932
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03793773427605629, eval_loss = 0.031067492440342903
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.039045363664627075, eval_loss = 0.027206018567085266
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03809531778097153, eval_loss = 0.024564892053604126
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03701942414045334, eval_loss = 0.022045228630304337
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.036540769040584564, eval_loss = 0.02158009260892868
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03742942959070206, eval_loss = 0.02581786923110485
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03750362992286682, eval_loss = 0.020509321242570877
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03799951449036598, eval_loss = 0.022754168137907982
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.038672130554914474, eval_loss = 0.02037416584789753
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03768506646156311, eval_loss = 0.019515937194228172
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03671443834900856, eval_loss = 0.021903926506638527
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03562901169061661, eval_loss = 0.02435135655105114
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03677504137158394, eval_loss = 0.02385864220559597
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03602680563926697, eval_loss = 0.02625129558146
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03514851629734039, eval_loss = 0.02485906146466732
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03490268811583519, eval_loss = 0.02355267107486725
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.038122083991765976, eval_loss = 0.023617910221219063
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.035976242274045944, eval_loss = 0.02236079052090645
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03620660677552223, eval_loss = 0.023878833279013634
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03650305047631264, eval_loss = 0.018968947231769562
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.034112799912691116, eval_loss = 0.019429611042141914
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03499123081564903, eval_loss = 0.020207608118653297
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03496670350432396, eval_loss = 0.018688788637518883
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03642451763153076, eval_loss = 0.01819836162030697
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03563687577843666, eval_loss = 0.018917266279459
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03748888894915581, eval_loss = 0.01632140763103962
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0361005999147892, eval_loss = 0.017774827778339386
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.035569578409194946, eval_loss = 0.018371790647506714
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03536231815814972, eval_loss = 0.01901918277144432
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.035768404603004456, eval_loss = 0.01995537430047989
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03506423532962799, eval_loss = 0.017636436969041824
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.035990700125694275, eval_loss = 0.019499292597174644
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.034822773188352585, eval_loss = 0.018795717507600784
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.034490298479795456, eval_loss = 0.017967602238059044
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.035101499408483505, eval_loss = 0.017792779952287674
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.036026086658239365, eval_loss = 0.016762906685471535
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03475963696837425, eval_loss = 0.02016274258494377
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03529293090105057, eval_loss = 0.016449864953756332
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03443353623151779, eval_loss = 0.019170640036463737
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03385556861758232, eval_loss = 0.009929674677550793
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.036430343985557556, eval_loss = 0.01805841736495495
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03551062196493149, eval_loss = 0.016439145430922508
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03527325764298439, eval_loss = 0.016653997823596
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03384047746658325, eval_loss = 0.016947628930211067
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03325054049491882, eval_loss = 0.01344124786555767
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03429297357797623, eval_loss = 0.019068259745836258
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03450940176844597, eval_loss = 0.018494488671422005
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03440112993121147, eval_loss = 0.017985153943300247
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03340966999530792, eval_loss = 0.018704228103160858
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03367674723267555, eval_loss = 0.01804744452238083
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03358672559261322, eval_loss = 0.017335494980216026
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03373051434755325, eval_loss = 0.014600812457501888
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03344966098666191, eval_loss = 0.014413518831133842
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.032736942172050476, eval_loss = 0.01844998635351658
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03373446315526962, eval_loss = 0.015024324879050255
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.033508408814668655, eval_loss = 0.01720779575407505
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.034427937120199203, eval_loss = 0.01730486750602722
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03360264003276825, eval_loss = 0.015065215528011322
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.034280695021152496, eval_loss = 0.015273980796337128
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03520171344280243, eval_loss = 0.014215007424354553
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.036169663071632385, eval_loss = 0.01684209145605564
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0340561643242836, eval_loss = 0.01583273895084858
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03305305168032646, eval_loss = 0.014588002115488052
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03464312106370926, eval_loss = 0.014257012866437435
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03309768810868263, eval_loss = 0.016810014843940735
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03328569605946541, eval_loss = 0.01672818325459957
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03506011888384819, eval_loss = 0.01215405948460102
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03412741795182228, eval_loss = 0.013789783231914043
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03322526067495346, eval_loss = 0.015631720423698425
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.033312514424324036, eval_loss = 0.0191570483148098
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.033907920122146606, eval_loss = 0.015007678419351578
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03167995810508728, eval_loss = 0.018172895535826683
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.033711571246385574, eval_loss = 0.017871446907520294
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03345256671309471, eval_loss = 0.014829222112894058
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03438563272356987, eval_loss = 0.017420576885342598
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03457007557153702, eval_loss = 0.017739254981279373
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03288270905613899, eval_loss = 0.019189419224858284
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03419117629528046, eval_loss = 0.01804281771183014
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.032130785286426544, eval_loss = 0.015275579877197742
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03211039677262306, eval_loss = 0.017316708341240883
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03468023240566254, eval_loss = 0.015127306804060936
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.033669739961624146, eval_loss = 0.01527163852006197
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03379129245877266, eval_loss = 0.01344910915941
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03405824303627014, eval_loss = 0.015451506711542606
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03455888852477074, eval_loss = 0.012992076575756073
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03384282439947128, eval_loss = 0.014262215234339237
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.034541960805654526, eval_loss = 0.019503168761730194
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0338619127869606, eval_loss = 0.018556658178567886
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03242991864681244, eval_loss = 0.014918472617864609
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03372405096888542, eval_loss = 0.014225177466869354
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03184622898697853, eval_loss = 0.013134004548192024
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03227834776043892, eval_loss = 0.017383459955453873
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.033605486154556274, eval_loss = 0.019566787406802177
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.031744953244924545, eval_loss = 0.01311551034450531
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.032850977033376694, eval_loss = 0.01229719165712595
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03326503559947014, eval_loss = 0.014320839196443558
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.032203592360019684, eval_loss = 0.02116616629064083
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.030968882143497467, eval_loss = 0.01413506269454956
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03302730619907379, eval_loss = 0.01762055978178978
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03381233289837837, eval_loss = 0.014278213493525982
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03179154917597771, eval_loss = 0.016102727502584457
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03294992446899414, eval_loss = 0.01753845065832138
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03394957631826401, eval_loss = 0.018699055537581444
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03127963840961456, eval_loss = 0.011019323021173477
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.032315805554389954, eval_loss = 0.018240589648485184
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.033117301762104034, eval_loss = 0.015431380830705166
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03202424198389053, eval_loss = 0.01522070076316595
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03147769346833229, eval_loss = 0.013390996493399143
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.033364396542310715, eval_loss = 0.019123777747154236
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03137243166565895, eval_loss = 0.017486369237303734
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03266261890530586, eval_loss = 0.015601448714733124
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.032553352415561676, eval_loss = 0.015537170693278313
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.029895270243287086, eval_loss = 0.010389231145381927
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03253830969333649, eval_loss = 0.02022573910653591
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03319114074110985, eval_loss = 0.01689884066581726
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.031539589166641235, eval_loss = 0.015769384801387787
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03150108456611633, eval_loss = 0.018297294154763222
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.032350823283195496, eval_loss = 0.01821613311767578
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03478100150823593, eval_loss = 0.018518824130296707
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03255010023713112, eval_loss = 0.01596168801188469
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03170900046825409, eval_loss = 0.01941227912902832
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03313048556447029, eval_loss = 0.01686454936861992
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.030250215902924538, eval_loss = 0.01551365852355957
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03178788721561432, eval_loss = 0.01608891226351261
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03192327916622162, eval_loss = 0.018298953771591187
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03232059255242348, eval_loss = 0.015975767746567726
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03228576108813286, eval_loss = 0.01857852376997471
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.029485227540135384, eval_loss = 0.01565823145210743
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.031130816787481308, eval_loss = 0.016001136973500252
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03194583207368851, eval_loss = 0.012867585755884647
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03141326829791069, eval_loss = 0.015867138281464577
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.032604046165943146, eval_loss = 0.015323526225984097
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02985808625817299, eval_loss = 0.01515659037977457
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03143591433763504, eval_loss = 0.0148024195805192
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03252064809203148, eval_loss = 0.01608516275882721
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.027971483767032623, eval_loss = 0.014387045055627823
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03150090202689171, eval_loss = 0.019059492275118828
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03168395906686783, eval_loss = 0.021458279341459274
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03197717294096947, eval_loss = 0.020305752754211426
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.030410291627049446, eval_loss = 0.022859735414385796
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03137030079960823, eval_loss = 0.013689964078366756
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.028875544667243958, eval_loss = 0.014628893695771694
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.029456913471221924, eval_loss = 0.015655823051929474
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03000427782535553, eval_loss = 0.016522875055670738
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.029114728793501854, eval_loss = 0.017608925700187683
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0305815190076828, eval_loss = 0.019173115491867065
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.029217125847935677, eval_loss = 0.018260736018419266
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.03142324462532997, eval_loss = 0.024981817230582237
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.030094774439930916, eval_loss = 0.019319120794534683
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.031243909150362015, eval_loss = 0.01273323129862547
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.029071159660816193, eval_loss = 0.012879185378551483
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.027565328404307365, eval_loss = 0.0205315500497818
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.029035983607172966, eval_loss = 0.024919111281633377
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02754002809524536, eval_loss = 0.013310356065630913
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0286745335906744, eval_loss = 0.020403757691383362
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.029299156740307808, eval_loss = 0.016552716493606567
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.029313037171959877, eval_loss = 0.02450607903301716
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.028819501399993896, eval_loss = 0.01926894672214985
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.025882983580231667, eval_loss = 0.025647051632404327
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.028211526572704315, eval_loss = 0.01614346168935299
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.028005028143525124, eval_loss = 0.022300971671938896
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02806009352207184, eval_loss = 0.01574084162712097
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0267395731061697, eval_loss = 0.018754743039608
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.030029350891709328, eval_loss = 0.019615452736616135
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.028103945776820183, eval_loss = 0.024799522012472153
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02700413018465042, eval_loss = 0.021219590678811073
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.026789739727973938, eval_loss = 0.030841797590255737
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.027008363977074623, eval_loss = 0.024955131113529205
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.025795452296733856, eval_loss = 0.0271007027477026
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02782907523214817, eval_loss = 0.03377614915370941
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.025966258719563484, eval_loss = 0.011431792750954628
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.023593947291374207, eval_loss = 0.025774477049708366
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02445300668478012, eval_loss = 0.025975879281759262
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02803990989923477, eval_loss = 0.026695089414715767
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02388082444667816, eval_loss = 0.015656258910894394
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0280260369181633, eval_loss = 0.03600586578249931
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02575846016407013, eval_loss = 0.029559968039393425
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.025490669533610344, eval_loss = 0.024637427181005478
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.025068260729312897, eval_loss = 0.01988384686410427
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.026410672813653946, eval_loss = 0.017563536763191223
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.023827724158763885, eval_loss = 0.019656311720609665
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.023362847045063972, eval_loss = 0.019622381776571274
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02306639589369297, eval_loss = 0.014143037609755993
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.025057869032025337, eval_loss = 0.014466988854110241
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02552437223494053, eval_loss = 0.021289333701133728
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.026798080652952194, eval_loss = 0.010012561455368996
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.022414209321141243, eval_loss = 0.013464905321598053
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.022319579496979713, eval_loss = 0.028825733810663223
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02574470266699791, eval_loss = 0.01321460586041212
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.021245140582323074, eval_loss = 0.020692626014351845
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.021453343331813812, eval_loss = 0.02063492126762867
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02165151573717594, eval_loss = 0.016848711296916008
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02343764528632164, eval_loss = 0.022181961685419083
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02069808915257454, eval_loss = 0.02119877003133297
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02152409963309765, eval_loss = 0.0216529481112957
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.025161735713481903, eval_loss = 0.011460939422249794
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.021352753043174744, eval_loss = 0.015687018632888794
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.022777818143367767, eval_loss = 0.012751821428537369
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.024078674614429474, eval_loss = 0.015506411902606487
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02344351075589657, eval_loss = 0.010915501974523067
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.019611872732639313, eval_loss = 0.015339965000748634
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02169872261583805, eval_loss = 0.015411202795803547
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.021178515627980232, eval_loss = 0.011755011044442654
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.021531587466597557, eval_loss = 0.012496269308030605
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.019919373095035553, eval_loss = 0.012897703796625137
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01870032772421837, eval_loss = 0.012190734036266804
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.018954472616314888, eval_loss = 0.010484390892088413
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.022304993122816086, eval_loss = 0.011508394964039326
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.017836494371294975, eval_loss = 0.018877625465393066
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.02144651673734188, eval_loss = 0.011699054390192032
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.018683716654777527, eval_loss = 0.01380425039678812
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.021589353680610657, eval_loss = 0.011759509332478046
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01842512935400009, eval_loss = 0.011197014711797237
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.020503617823123932, eval_loss = 0.010683786123991013
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01921696588397026, eval_loss = 0.012236574664711952
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.017638634890317917, eval_loss = 0.01006427500396967
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.017952436581254005, eval_loss = 0.016952527686953545
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01763971336185932, eval_loss = 0.010691197589039803
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01787398010492325, eval_loss = 0.010666263289749622
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01833988167345524, eval_loss = 0.010686803609132767
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.017516039311885834, eval_loss = 0.009999161586165428
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.019786858931183815, eval_loss = 0.009984410367906094
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01755046844482422, eval_loss = 0.01023541297763586
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.017183858901262283, eval_loss = 0.011187168769538403
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.017332034185528755, eval_loss = 0.013359645381569862
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.017004257068037987, eval_loss = 0.011301431804895401
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01909368298947811, eval_loss = 0.01117237564176321
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.016913292929530144, eval_loss = 0.010724307969212532
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.016708331182599068, eval_loss = 0.0102612916380167
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01808798499405384, eval_loss = 0.009738779626786709
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.016932640224695206, eval_loss = 0.00995082687586546
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.017957745119929314, eval_loss = 0.010334092192351818
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.017775435000658035, eval_loss = 0.010844670236110687
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01710277795791626, eval_loss = 0.010289745405316353
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0191978570073843, eval_loss = 0.010471917688846588
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.019579816609621048, eval_loss = 0.010528024286031723
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.016690930351614952, eval_loss = 0.010097887367010117
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.016832642257213593, eval_loss = 0.01020017173141241
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.016777703538537025, eval_loss = 0.010685908608138561
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.017220498993992805, eval_loss = 0.0101951127871871
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.015808386728167534, eval_loss = 0.01055816188454628
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.016211586073040962, eval_loss = 0.009601586498320103
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01641550473868847, eval_loss = 0.00986790843307972
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.015459802001714706, eval_loss = 0.010627128183841705
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.016241345554590225, eval_loss = 0.009767049923539162
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.015481820330023766, eval_loss = 0.009940745308995247
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01589135266840458, eval_loss = 0.009921432472765446
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0154337789863348, eval_loss = 0.01005319133400917
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.015404346399009228, eval_loss = 0.010026236064732075
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.015618570148944855, eval_loss = 0.010112704709172249
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.015160429291427135, eval_loss = 0.009588168933987617
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01505647785961628, eval_loss = 0.00987037643790245
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.015275221318006516, eval_loss = 0.009124573320150375
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.014956657774746418, eval_loss = 0.011341351084411144
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.014847871847450733, eval_loss = 0.010656604543328285
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.015817541629076004, eval_loss = 0.010152824223041534
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01567503996193409, eval_loss = 0.010484240017831326
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.014645564369857311, eval_loss = 0.010059205815196037
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01418604888021946, eval_loss = 0.009791175834834576
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.014471854083240032, eval_loss = 0.00981991272419691
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.014396322891116142, eval_loss = 0.009715232066810131
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.013928827829658985, eval_loss = 0.011378135532140732
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01477300189435482, eval_loss = 0.010719852522015572
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.014477972872555256, eval_loss = 0.010108076967298985
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.014101522974669933, eval_loss = 0.010682611726224422
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.014084551483392715, eval_loss = 0.01037581916898489
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01317957416176796, eval_loss = 0.009558509103953838
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.013626260682940483, eval_loss = 0.009984632954001427
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.013525311835110188, eval_loss = 0.009603230282664299
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.013685548678040504, eval_loss = 0.009771142154932022
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.014196150004863739, eval_loss = 0.009040567092597485
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.013345024548470974, eval_loss = 0.010818572714924812
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01376332063227892, eval_loss = 0.010212253779172897
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01353402528911829, eval_loss = 0.011285803280770779
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012983983382582664, eval_loss = 0.010690375231206417
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.014341788366436958, eval_loss = 0.009338431991636753
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012383149936795235, eval_loss = 0.009747616946697235
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012803659774363041, eval_loss = 0.009440130554139614
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.013189524412155151, eval_loss = 0.01070212759077549
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.013222894631326199, eval_loss = 0.010726955719292164
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0133721474558115, eval_loss = 0.01012171246111393
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012931709177792072, eval_loss = 0.01056753285229206
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.013481826521456242, eval_loss = 0.009912625886499882
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.013925492763519287, eval_loss = 0.01036653108894825
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.013069434091448784, eval_loss = 0.010283279232680798
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012679926119744778, eval_loss = 0.010160786099731922
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012705767527222633, eval_loss = 0.009776140563189983
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012494316324591637, eval_loss = 0.010097665712237358
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.013075469993054867, eval_loss = 0.009751052595674992
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012839951552450657, eval_loss = 0.010054102167487144
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012879949063062668, eval_loss = 0.010141659528017044
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012909400276839733, eval_loss = 0.010041422210633755
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012749254703521729, eval_loss = 0.01012211013585329
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.013377738185226917, eval_loss = 0.009937567636370659
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012490253895521164, eval_loss = 0.009911524131894112
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012691345997154713, eval_loss = 0.009992833249270916
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012652487494051456, eval_loss = 0.009957079775631428
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012658490799367428, eval_loss = 0.010145960375666618
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0127457519993186, eval_loss = 0.010018645785748959
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012355067767202854, eval_loss = 0.010153922252357006
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012362868525087833, eval_loss = 0.010720249265432358
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012633126229047775, eval_loss = 0.010097364895045757
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.011581643484532833, eval_loss = 0.00985131599009037
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012964431196451187, eval_loss = 0.010215395130217075
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012955093756318092, eval_loss = 0.010220327414572239
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012322633527219296, eval_loss = 0.010349954478442669
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012189967557787895, eval_loss = 0.010609615594148636
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012275812216103077, eval_loss = 0.009993503801524639
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.013191006146371365, eval_loss = 0.00951788853853941
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012896854430437088, eval_loss = 0.011020300909876823
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012423491105437279, eval_loss = 0.010200751945376396
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01318296417593956, eval_loss = 0.010003010742366314
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012515084818005562, eval_loss = 0.009706378914415836
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012731700204312801, eval_loss = 0.010134068317711353
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012492384761571884, eval_loss = 0.010148097760975361
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012381074018776417, eval_loss = 0.010003296658396721
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.011863620020449162, eval_loss = 0.010213026776909828
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.011735863983631134, eval_loss = 0.010307161137461662
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012737780809402466, eval_loss = 0.009783869609236717
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012003891170024872, eval_loss = 0.009995193220674992
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.011833020485937595, eval_loss = 0.009981612674891949
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012349983677268028, eval_loss = 0.009765157476067543
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012202820740640163, eval_loss = 0.010030481964349747
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012264654971659184, eval_loss = 0.010102484375238419
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01261544693261385, eval_loss = 0.010199648328125477
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012112247757613659, eval_loss = 0.01038895919919014
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0124155068770051, eval_loss = 0.01013125292956829
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012692258693277836, eval_loss = 0.010430422611534595
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012114929035305977, eval_loss = 0.01033743191510439
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.011963047087192535, eval_loss = 0.010239480063319206
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012127259746193886, eval_loss = 0.009385637007653713
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.0120084835216403, eval_loss = 0.009941776283085346
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012571165338158607, eval_loss = 0.009734522551298141
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01234226580709219, eval_loss = 0.00982949510216713
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012170689180493355, eval_loss = 0.010546954348683357
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012071912176907063, eval_loss = 0.009811744093894958
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012165183201432228, eval_loss = 0.009903913363814354
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012011426500976086, eval_loss = 0.010195505805313587
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.011971361935138702, eval_loss = 0.010018880479037762
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012215504422783852, eval_loss = 0.009739191271364689
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012136969715356827, eval_loss = 0.010108808055520058
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01250197272747755, eval_loss = 0.009802867658436298
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.011837294325232506, eval_loss = 0.010366298258304596
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012904342263936996, eval_loss = 0.010002855211496353
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012129095382988453, eval_loss = 0.010396698489785194
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012102842330932617, eval_loss = 0.010117764584720135
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012290741316974163, eval_loss = 0.00998318288475275
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.01233214233070612, eval_loss = 0.009651520289480686
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012106098234653473, eval_loss = 0.010211169719696045
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.011901135556399822, eval_loss = 0.010185183957219124
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.011981364339590073, eval_loss = 0.010441900230944157
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.011976625770330429, eval_loss = 0.010041340254247189
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.012408504262566566, eval_loss = 0.010340019129216671
+torch.Size([200, 1]) torch.Size([200, 1])
+train-loss = 0.011944727972149849, eval_loss = 0.010090517811477184

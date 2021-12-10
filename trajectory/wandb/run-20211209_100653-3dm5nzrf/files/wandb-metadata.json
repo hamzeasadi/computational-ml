@@ -1,0 +1,22 @@
+{
+    "os": "macOS-11.5.2-x86_64-i386-64bit",
+    "python": "3.9.2",
+    "heartbeatAt": "2021-12-09T10:06:54.793247",
+    "startedAt": "2021-12-09T10:06:53.381081",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/hamzeasadi/python/computationalML/computational-ml/trajectory/testLSTM.py",
+    "codePath": "trajectory/testLSTM.py",
+    "git": {
+        "remote": "https://github.com/hamzeasadi/computational-ml.git",
+        "commit": "66aa48d742cc47ec96190353a3682ea448b42864"
+    },
+    "email": "hamzeasadi1@gmail.com",
+    "root": "/Users/hamzeasadi/python/computationalML/computational-ml",
+    "host": "4c175.local",
+    "username": "root",
+    "executable": "/Users/hamzeasadi/python/computationalML/computational-ml/trajectory/myenv/bin/python3"
+}

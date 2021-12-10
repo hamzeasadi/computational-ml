@@ -142,18 +142,6 @@ class LstmModel(nn.Module):
         pass
 
 
-def EntropyCal(*x):
-    total = sum(x)
-    e = 0.0
-    for a in x:
-        e += -(a/total)*math.log(a/total, 2)
-    print(e)
-
-
-
-
-
-
 
 
 
@@ -161,22 +149,17 @@ def EntropyCal(*x):
 def main():
     # DataPipleline = DataWrangling(data_path=data_path, sample_size=sample_size, batch_size=batch_size)
     # trainDataLoader, testDataLoader = DataPipleline.preProcess()
+    lstm = nn.LSTM(input_size=3, hidden_size=10, batch_first=True)
+    input_shape = torch.randn(100, 4, 3)
+    output, h = lstm(input_shape)
+    print(output.size())
 
 
 
-    X_train = X_ss[:200, :]
-    X_test = X_ss[200:, :]
-    y_train = y_mm[:200, :]
-    y_test = y_mm[200:, :]
 
-    X_train_tensors = Variable(torch.Tensor(X_train))
-    X_test_tensors = Variable(torch.Tensor(X_test))
-    y_train_tensors = Variable(torch.Tensor(y_train))
-    y_test_tensors = Variable(torch.Tensor(y_test))
+
     # print(X_train_tensors.shape)
 
-    X_train_tensors_final = torch.reshape(X_train_tensors, shape=(X_train_tensors.shape[0], 1, X_train_tensors.shape[1]))
-    X_test_tensors_final = torch.reshape(X_test_tensors, shape=(X_test_tensors.shape[0], 1, X_test_tensors.shape[1]))
     train(model=model, data=X_train_tensors_final, y_train=y_train_tensors, test_data=X_test_tensors_final,
         y_test=y_test_tensors, opt=optimizer, criterion=criterion, epochs=1)
 
