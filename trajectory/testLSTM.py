@@ -31,7 +31,7 @@ dataset_path = os.path.join(data_path, 'SBUX.csv')
 # define hyper parameters
 epochs = 2
 learning_rate = 1e-2
-num_classes = 1
+num_classes = 2
 num_layers = 1
 input_size = 5
 hidden_size =2
@@ -132,7 +132,7 @@ criterion = nn.MSELoss()
 optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
 
 # wandb watch model
-wandb.watch(model)
+# wandb.watch(model)
 
 def main():
     X_train_tensors_final, X_test_tensors_final, y_train_tensors, y_test_tensors = loadData(data_path=dataset_path)
