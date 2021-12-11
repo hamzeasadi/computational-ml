@@ -177,7 +177,10 @@ class LstmModel(nn.Module):
 
         return out
 
-# model = LstmModel(input_shape=input_shape, hidden_size=hidden_size, fully_conn_size=fully_conn_size, num_outputs=num_outputs)
+model = LstmModel(input_shape=hyper['input_shape'], hidden_size=hyper['hidden_size'],
+            fully_conn_size=hyper['fully_conn_size'], num_outputs=hyper['num_outputs'])
+
+
 
 
 
