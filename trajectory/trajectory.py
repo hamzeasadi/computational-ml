@@ -136,6 +136,18 @@ class LstmModel(nn.Module):
     """
     def __init__(self, input_shape, hidden_size, fully_conn_size, num_outputs):
         super(LstmModel, self).__init__()
+        # input_shape = (batch_size, seq_len, feature_size)
+        self.input_shape = input_shape
+        self.hidden_size = hidden_size
+        self.fully_conn_size = fully_conn_size
+        self.num_outputs = num_outputs
+        self.lstm = nn.LSTM(input_size=input_shape[-1], hidden_size=hidden_size, num_layers=2, dropout=0.1)
+        self.relu = nn.ReLU()
+        self.flatten = nn.Flatten()
+        # fc_size = seq_len*hidden_size
+        fc_size = 1 * hidden_size
+        self.fc_1 = nn.Linear(in_features=fc_size, out_features=6)
+        self.outlayer = nn.Linear(in_features=6, out_features=num_outputs)
 
 
     def forward(self, x):
