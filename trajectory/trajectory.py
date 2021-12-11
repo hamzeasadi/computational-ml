@@ -177,8 +177,27 @@ class LstmModel(nn.Module):
         return out
 
 # def a train function
-def train():
-    pass
+def train(model, train_data, test_data, opt, loss_func, epochs):
+    for epoch in range(epochs):
+        train_loss = 0.0
+        eval_loss = 0.0
+        evalOverTrain_loss = 0.0
+        model.train()
+    for x, y in train_data:
+        y_pre = model(x)
+        loss = loss_func(y_pre, y)
+        opt.zero_grad()
+        loss.backward()
+        opt.step()
+        train_loss += (loss.item() - train_loss)/len(y)
+    model.eval()
+    with torch.no_grad():
+        for x, y in test_data:
+            y_pre_ = model(x)
+            loss = loss_func(y_pre_, y)
+            eval_loss += (loss.item() - eval_loss)/len(y)
+
+    print(f"epoch={epoch}, train_loss={train_loss}, eval_loss={eval_loss}, evalOverTrain={eval_loss/train_loss}")
 
 
 model = LstmModel(input_shape=hyper['input_shape'], hidden_size=hyper['hidden_size'],
@@ -189,13 +208,10 @@ criterion = nn.MSELoss()
 optimizer = torch.optim.Adam(params=model.parameters(), lr=hyper['learning_rate'])
 
 
-
-
-
 def main():
-    # DataPipleline = DataWrangling(data_path=dataset_path, seq_lenght=hyper['input_shape'][1],
-    #                                 batch_size=hyper['input_shape'][0])
-    # trainDataLoader, testDataLoader = DataPipleline.preProcess()
+    DataPipleline = DataWrangling(data_path=dataset_path, seq_lenght=hyper['input_shape'][1],
+                                    batch_size=hyper['input_shape'][0])
+    trainDataLoader, testDataLoader = DataPipleline.preProcess()
 
 
 
