@@ -88,7 +88,7 @@ class DataWrangling():
         ValueError: if sample_size is not a positive integer
     """
     def __init__(self, data_path, seq_lenght: int, batch_size):
-        if (sample_size > 0 and isinstance(sample_size, int)):
+        if (seq_lenght > 0 and isinstance(seq_lenght, int)):
             self.seq_lenght = seq_lenght
             self.batch_size = batch_size
             self.data_path = data_path
@@ -176,6 +176,11 @@ class LstmModel(nn.Module):
 
         return out
 
+# def a train function
+def train():
+    pass
+
+
 model = LstmModel(input_shape=hyper['input_shape'], hidden_size=hyper['hidden_size'],
             fully_conn_size=hyper['fully_conn_size'], num_outputs=hyper['num_outputs'])
 
@@ -188,9 +193,10 @@ optimizer = torch.optim.Adam(params=model.parameters(), lr=hyper['learning_rate'
 
 
 def main():
-    # DataPipleline = DataWrangling(data_path=data_path, sample_size=sample_size, batch_size=batch_size)
+    # DataPipleline = DataWrangling(data_path=dataset_path, seq_lenght=hyper['input_shape'][1],
+    #                                 batch_size=hyper['input_shape'][0])
     # trainDataLoader, testDataLoader = DataPipleline.preProcess()
-    print(model)
+
 
 
 
