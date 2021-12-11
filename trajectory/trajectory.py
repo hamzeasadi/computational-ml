@@ -20,6 +20,7 @@ from torch.autograd import Variable
 random.seed(42)
 np.random.seed(42)
 torch.manual_seed(42)
+
 # define a funtion for creating directories
 def dirCreation(base_path, dirname):
     path = os.path.join(base_path, dirname)
@@ -37,19 +38,19 @@ def dirCreation(base_path, dirname):
 
 
 # define pathes
+base_path = os.path.join(os.path.dirname(os.getcwd()), 'data')
 paths = dict(
-data_path = os.path.join(os.path.dirname(os.getcwd()), 'data'),
-dataset_path = os.path.join(os.path.dirname(os.getcwd()), 'leader100turn.csv'),
+dataset_path = os.path.join(base_path, 'leader100turn.csv'),
 checkpoint_name = f"checkpoint-lstm-model-{0}.pt",
 model_name = f"best-lstm-model-{0}.pt",
-checkpoint_path = os.path.join(data_path, 'checkpoint', checkpoint_name),
-best_model_path = os.path.join(data_path, 'best_model', model_name)
+checkpoint_path = os.path.join(base_path, 'checkpoint', checkpoint_name),
+best_model_path = os.path.join(base_path, 'best_model', model_name)
 )
 
 # define hyper parameters
 # input_shape = (batch_size, seq_length, feature_size)
 hyper = dict(
-input_shape=(100, 4, 3), epochs=100, learning_rate=1e-3, num_cls=3,
+input_shape=(100, 4, 3), epochs=100, learning_rate=1e-3, num_outputs=3,
 min_val_error=np.inf, num_layers=2, hidden_size=12, fully_conn_size=9
 )
 
@@ -87,16 +88,16 @@ class DataWrangling():
     Raises:
         ValueError: if sample_size is not a positive integer
     """
-    def __init__(self, data_path, sample_size: int, batch_size):
+    def __init__(self, data_path, seq_lenght: int, batch_size):
         if (sample_size > 0 and isinstance(sample_size, int)):
-            self.sample_size = sample_size
+            self.seq_lenght = seq_lenght
             self.batch_size = batch_size
             self.data_path = data_path
         else:
             raise ValueError(f"Expected a positive integer for sample_size, Got {sample_size}")
 
-    def __call__(self, new_sample_size, new_batch_size):
-        self.sample_size = new_sample_size
+    def __call__(self, new_seq_lenght, new_batch_size):
+        self.seq_lenght= new_seq_lenght
         self.batch_size = new_batch_size
         print(f"A new sample size and batch size initiated")
 
@@ -110,9 +111,9 @@ class DataWrangling():
         data = self.loadData()
 
         X, Y = [], []
-        for i in range(len(data)-self.sample_size):
-            X.append(data[i:i+self.sample_size])
-            Y.append(data[i+self.sample_size])
+        for i in range(len(data)-self.seq_lenght):
+            X.append(data[i:i+self.seq_lenght])
+            Y.append(data[i+self.seq_lenght])
 
         return np.asarray(X), np.asarray(Y)
 
@@ -176,7 +177,7 @@ class LstmModel(nn.Module):
 
         return out
 
-model = LstmModel(input_shape=input_shape, hidden_size=hidden_size, fully_conn_size=fully_conn_size, num_outputs=num_outputs)
+# model = LstmModel(input_shape=input_shape, hidden_size=hidden_size, fully_conn_size=fully_conn_size, num_outputs=num_outputs)
 
 
 
@@ -184,6 +185,7 @@ model = LstmModel(input_shape=input_shape, hidden_size=hidden_size, fully_conn_s
 def main():
     DataPipleline = DataWrangling(data_path=data_path, sample_size=sample_size, batch_size=batch_size)
     trainDataLoader, testDataLoader = DataPipleline.preProcess()
+
 
 
 
