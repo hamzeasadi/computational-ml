@@ -14,6 +14,9 @@ import random
 import shutil
 import math
 from torch.autograd import Variable
+import wandb
+
+wandb.login()
 
 
 # set random seeds to for consistant algorithm performance check
@@ -49,8 +52,8 @@ best_model_path = os.path.join(base_path, 'best_model', model_name)
 # define hyper parameters
 # input_shape = (batch_size, seq_length, feature_size)
 hyper = dict(
-input_shape=(100, 4, 3), epochs=10, learning_rate=1e-3, num_outputs=3,
-min_val_error=np.inf, num_layers=2, hidden_size=12, fully_conn_size=9
+input_shape=(100, 4, 3), epochs=100, learning_rate=5e-4, num_outputs=3,
+min_val_error=np.inf, num_layers=2, hidden_size=16, fully_conn_size=9
 )
 
 
@@ -104,7 +107,7 @@ class DataWrangling():
         nonNormalized_data = pd.read_csv(self.data_path)
         NormalizedData = (nonNormalized_data - nonNormalized_data.mean())/nonNormalized_data.std()
 
-        return NormalizedData.values
+        return nonNormalized_data.values
 
     def dataSplit(self):
         data = self.loadData()
@@ -147,37 +150,43 @@ class LstmModel(nn.Module):
         Raises:
             None
     """
-    def __init__(self, input_shape, hidden_size, fully_conn_size, num_outputs):
+    def __init__(self, input_shape, hidden_size, fully_conn_size, num_outputs, num_layers):
         super(LstmModel, self).__init__()
         # input_shape = (batch_size, seq_len, feature_size)
+        self.num_layers = num_layers
         self.input_shape = input_shape
         self.hidden_size = hidden_size
         self.fully_conn_size = fully_conn_size
         self.num_outputs = num_outputs
-        self.lstm = nn.LSTM(input_size=input_shape[-1], hidden_size=hidden_size, num_layers=2, dropout=0.1, batch_first=True)
+        self.lstm = nn.LSTM(input_size=input_shape[-1], hidden_size=hidden_size, num_layers=num_layers, batch_first=True)
         self.relu = nn.ReLU()
         self.flatten = nn.Flatten()
         # fc_size = seq_len*hidden_size
         fc_size = 1 * hidden_size
-        self.fc_1 = nn.Linear(in_features=fc_size, out_features=fully_conn_size)
-        self.outlayer = nn.Linear(in_features=fully_conn_size, out_features=num_outputs)
-
+        # self.fc_1 = nn.Linear(in_features=fc_size, out_features=fully_conn_size)
+        self.outlayer = nn.Linear(in_features=fc_size, out_features=num_outputs)
+        self.sig = nn.Sigmoid()
 
     def forward(self, x):
         # h0 = torch.randn(self.input_shape)
         # c0 = torch.randn(self.input_shape)
         # x = self.lstm(x, (h0, c0))
-        h_0 = Variable(torch.randn(2, x.size(0), self.hidden_size))
-        c_0 = Variable(torch.randn(2, x.size(0), self.hidden_size))
+        # print(x.size(0))
+        # print(len(x.size(0)))
+        # h_0 = Variable(torch.randn(self.num_layers, self.input_shape[0], self.hidden_size))
+        # c_0 = Variable(torch.randn(self.num_layers, self.input_shape[0], self.hidden_size))
+        h_0 = Variable(torch.randn(self.num_layers, x.size(0), self.hidden_size))
+        c_0 = Variable(torch.randn(self.num_layers, x.size(0), self.hidden_size))
         x, (hn, cn) = self.lstm(x, (h_0, c_0))
-        # x = self.lstm(x)
+        # x, (hn, cn) = self.lstm(x)
+        # print(x.size(), hn.size(), cn.size())
         x = x[:, -1, :]
         x = self.relu(x)
         x = self.flatten(x)
-        x = self.fc_1(x)
-        x = self.relu(x)
+        # x = self.fc_1(x)
+        # x = self.relu(x)
         out = self.outlayer(x)
-
+        # out = self.sig(out)
         return out
 
 # def a train function
@@ -187,36 +196,49 @@ def train(model, train_data, test_data, opt, loss_func, epochs):
         eval_loss = 0.0
         evalOverTrain_loss = 0.0
         model.train()
-    for x, y in train_data:
-        y_pre = model(x)
-        loss = loss_func(y_pre, y)
-        opt.zero_grad()
-        loss.backward()
-        opt.step()
-        train_loss += (loss.item() - train_loss)/len(y)
-    model.eval()
-    with torch.no_grad():
-        for x, y in test_data:
-            y_pre_ = model(x)
-            loss = loss_func(y_pre_, y)
-            eval_loss += (loss.item() - eval_loss)/len(y)
+        for x, y in train_data:
+            y_pre = model(x)
+            loss = loss_func(y_pre, y)
+            opt.zero_grad()
+            loss.backward()
+            opt.step()
+            train_loss += (loss.item() - train_loss)/len(y)
+        model.eval()
+        with torch.no_grad():
+            for x, y in test_data:
+                y_pre_ = model(x)
+                loss = loss_func(y_pre_, y)
+                eval_loss += (loss.item() - eval_loss)/len(y)
 
-    print(f"epoch={epoch}, train_loss={train_loss}, eval_loss={eval_loss}, evalOverTrain={eval_loss/train_loss}")
+        print(f"epoch={epoch}, train_loss={train_loss:.8f}, eval_loss={eval_loss:.8f}, evalOverTrain={eval_loss/train_loss :.8f}")
+        wandb.log(
+        {
+        'epoch':epoch,
+        'train_loss':train_loss,
+        'eval_loss': eval_loss,
+        'EvalOverTrain_loss': eval_loss/train_loss
+        }
+        )
 
 
-model = LstmModel(input_shape=hyper['input_shape'], hidden_size=hyper['hidden_size'],
+wandb.init(name=f'trajectory-epoch-{hyper["epochs"]}', project='trajectory', entity='hamzeasadi')
+wandb.Config.lr = hyper['learning_rate']
+
+model = LstmModel(input_shape=hyper['input_shape'], hidden_size=hyper['hidden_size'], num_layers=hyper['num_layers'],
             fully_conn_size=hyper['fully_conn_size'], num_outputs=hyper['num_outputs'])
 
 # define criteria and optimizer
 criterion = nn.MSELoss()
 optimizer = torch.optim.Adam(params=model.parameters(), lr=hyper['learning_rate'])
 
+wandb.watch(model)
 
 def main():
     DataPipleline = DataWrangling(data_path=dataset_path, seq_lenght=hyper['input_shape'][1],
                                     batch_size=hyper['input_shape'][0])
     trainDataLoader, testDataLoader = DataPipleline.preProcess()
     train(model=model, train_data=trainDataLoader, test_data=testDataLoader, opt=optimizer, loss_func=criterion, epochs=hyper['epochs'])
+    # out = model(torch.randn(100, 4, 3))
 
 
 

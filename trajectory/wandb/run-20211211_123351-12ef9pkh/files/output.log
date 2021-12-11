@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/hamzeasadi/python/computationalML/computational-ml/trajectory/trajectory.py", line 224, in <module>
+    model = LstmModel(input_shape=hyper['input_shape'], hidden_size=hyper['hidden_size'],
+TypeError: __init__() missing 1 required positional argument: 'num_layers'

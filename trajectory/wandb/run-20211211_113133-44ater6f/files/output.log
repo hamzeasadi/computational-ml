@@ -1,0 +1,16 @@
+/Users/hamzeasadi/python/computationalML/computational-ml/trajectory/myenv/lib/python3.9/site-packages/torch/nn/modules/loss.py:520: UserWarning: Using a target size (torch.Size([100, 3])) that is different to the input size (torch.Size([1, 3])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+epoch=0, train_loss=1.00855667, eval_loss=0.46726902, evalOverTrain=0.46330467
+epoch=1, train_loss=0.99782784, eval_loss=0.46731743, evalOverTrain=0.46833473
+/Users/hamzeasadi/python/computationalML/computational-ml/trajectory/myenv/lib/python3.9/site-packages/torch/nn/modules/loss.py:520: UserWarning: Using a target size (torch.Size([17, 3])) that is different to the input size (torch.Size([1, 3])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+/Users/hamzeasadi/python/computationalML/computational-ml/trajectory/myenv/lib/python3.9/site-packages/torch/nn/modules/loss.py:520: UserWarning: Using a target size (torch.Size([80, 3])) that is different to the input size (torch.Size([1, 3])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+epoch=2, train_loss=0.99183511, eval_loss=0.46722300, evalOverTrain=0.47106923
+epoch=3, train_loss=0.99026539, eval_loss=0.46729482, evalOverTrain=0.47188847
+epoch=4, train_loss=1.00220889, eval_loss=0.46760545, evalOverTrain=0.46657484
+epoch=5, train_loss=0.99325151, eval_loss=0.46721172, evalOverTrain=0.47038611
+epoch=6, train_loss=0.99702393, eval_loss=0.46764371, evalOverTrain=0.46903961
+epoch=7, train_loss=0.99558401, eval_loss=0.46788939, evalOverTrain=0.46996475
+epoch=8, train_loss=0.99716935, eval_loss=0.46754514, evalOverTrain=0.46887235
+epoch=9, train_loss=0.99586622, eval_loss=0.46825113, evalOverTrain=0.47019481

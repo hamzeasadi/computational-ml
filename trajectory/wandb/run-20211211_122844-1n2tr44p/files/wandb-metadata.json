@@ -1,0 +1,22 @@
+{
+    "os": "macOS-11.5.2-x86_64-i386-64bit",
+    "python": "3.9.2",
+    "heartbeatAt": "2021-12-11T12:28:45.717389",
+    "startedAt": "2021-12-11T12:28:44.598497",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/hamzeasadi/python/computationalML/computational-ml/trajectory/trajectory.py",
+    "codePath": "trajectory/trajectory.py",
+    "git": {
+        "remote": "https://github.com/hamzeasadi/computational-ml.git",
+        "commit": "5d93fd60e1363e21323428069b60d1d1ffaba421"
+    },
+    "email": "hamzeasadi1@gmail.com",
+    "root": "/Users/hamzeasadi/python/computationalML/computational-ml",
+    "host": "4c175.local",
+    "username": "root",
+    "executable": "/Users/hamzeasadi/python/computationalML/computational-ml/trajectory/myenv/bin/python3"
+}

@@ -1,0 +1,16 @@
+
+epoch=0, train_loss=0.00197533, eval_loss=0.93789738, evalOverTrain=474.80534098
+epoch=1, train_loss=0.00007543, eval_loss=0.94059464, evalOverTrain=12469.57834312
+epoch=2, train_loss=0.00003611, eval_loss=0.94279656, evalOverTrain=26108.26548803
+epoch=3, train_loss=0.00002284, eval_loss=0.94168052, evalOverTrain=41220.65183203
+epoch=4, train_loss=0.00001894, eval_loss=0.94230396, evalOverTrain=49762.67710324
+epoch=5, train_loss=0.00001847, eval_loss=0.93929635, evalOverTrain=50842.92848847
+epoch=6, train_loss=0.00001414, eval_loss=0.93880751, evalOverTrain=66400.16314417
+epoch=7, train_loss=0.00001585, eval_loss=0.93851563, evalOverTrain=59207.22731951
+epoch=8, train_loss=0.00001170, eval_loss=0.94066979, evalOverTrain=80421.89294133
+epoch=9, train_loss=0.00001882, eval_loss=0.94034984, evalOverTrain=49972.17666123
+epoch=10, train_loss=0.00001433, eval_loss=0.94352615, evalOverTrain=65843.59559880
+epoch=11, train_loss=0.00001428, eval_loss=0.94338081, evalOverTrain=66082.97174344
+epoch=12, train_loss=0.00001413, eval_loss=0.94184491, evalOverTrain=66665.70336261
+epoch=13, train_loss=0.00000806, eval_loss=0.93943667, evalOverTrain=116522.16816539
+epoch=14, train_loss=0.00001228, eval_loss=0.94080961, evalOverTrain=76614.61626417
