@@ -20,26 +20,27 @@ from torch.autograd import Variable
 random.seed(42)
 np.random.seed(42)
 torch.manual_seed(42)
+# define a funtion for creating directories
+def dirCreation(base_path, dirname):
+    pass
 
 # define pathes
-data_path = os.path.join(os.path.dirname(os.getcwd()), 'data')
-dataset_path = os.path.join(os.path.dirname(os.getcwd()), 'leader100turn.csv')
-checkpoint_name = f"checkpoint-lstm-model-{0}.pt"
-model_name = f"best-lstm-model-{0}.pt"
-checkpoint_path = os.path.join(data_path, 'checkpoint', checkpoint_name)
+paths = dict(
+data_path = os.path.join(os.path.dirname(os.getcwd()), 'data'),
+dataset_path = os.path.join(os.path.dirname(os.getcwd()), 'leader100turn.csv'),
+checkpoint_name = f"checkpoint-lstm-model-{0}.pt",
+model_name = f"best-lstm-model-{0}.pt",
+checkpoint_path = os.path.join(data_path, 'checkpoint', checkpoint_name),
 best_model_path = os.path.join(data_path, 'best_model', model_name)
+)
 
 # define hyper parameters
-batch_size = 100
-epochs = 100
-learning_rate = 1e-2
-sample_size = 4
-# num_outputs = 3
-num_classes = 1
-min_val_error = np.inf
-num_layers = 2
-input_size = 5
-hidden_size =2
+# input_shape = (batch_size, seq_length, feature_size)
+hyper = dict(
+input_shape=(100, 4, 3), epochs=100, learning_rate=1e-3, num_cls=3,
+min_val_error=np.inf, num_layers=2, hidden_size=12, fully_conn_size=9
+)
+
 
 # define and implement save and load checkpoints
 def save_ckp(state, ckp_path, is_best_model, bst_model_path):
@@ -74,7 +75,7 @@ class DataWrangling():
     Raises:
         ValueError: if sample_size is not a positive integer
     """
-    def __init__(self, data_path, sample_size: int, batch_size=100):
+    def __init__(self, data_path, sample_size: int, batch_size):
         if (sample_size > 0 and isinstance(sample_size, int)):
             self.sample_size = sample_size
             self.batch_size = batch_size
@@ -146,8 +147,8 @@ class LstmModel(nn.Module):
         self.flatten = nn.Flatten()
         # fc_size = seq_len*hidden_size
         fc_size = 1 * hidden_size
-        self.fc_1 = nn.Linear(in_features=fc_size, out_features=6)
-        self.outlayer = nn.Linear(in_features=6, out_features=num_outputs)
+        self.fc_1 = nn.Linear(in_features=fc_size, out_features=fully_conn_size)
+        self.outlayer = nn.Linear(in_features=fully_conn_size, out_features=num_outputs)
 
 
     def forward(self, x):
@@ -163,7 +164,7 @@ class LstmModel(nn.Module):
 
         return out
 
-
+model = LstmModel(input_shape=input_shape, hidden_size=hidden_size, fully_conn_size=fully_conn_size, num_outputs=num_outputs)
 
 
 
