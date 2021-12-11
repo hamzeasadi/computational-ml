@@ -22,7 +22,19 @@ np.random.seed(42)
 torch.manual_seed(42)
 # define a funtion for creating directories
 def dirCreation(base_path, dirname):
-    pass
+    path = os.path.join(base_path, dirname)
+    # if os.path.exists(path):
+    #     return path
+    # else:
+    #     return os.makedirs(path)
+    # try:
+    #     os.makedirs(path)
+    # except FileExistsError as e:
+    #     print(f"{e}")
+    #     return path
+    os.makedirs(path, exist_ok=True)
+    return path
+
 
 # define pathes
 paths = dict(
