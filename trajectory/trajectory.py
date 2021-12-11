@@ -49,7 +49,7 @@ best_model_path = os.path.join(base_path, 'best_model', model_name)
 # define hyper parameters
 # input_shape = (batch_size, seq_length, feature_size)
 hyper = dict(
-input_shape=(100, 4, 3), epochs=100, learning_rate=1e-3, num_outputs=3,
+input_shape=(100, 4, 3), epochs=10, learning_rate=1e-3, num_outputs=3,
 min_val_error=np.inf, num_layers=2, hidden_size=12, fully_conn_size=9
 )
 
@@ -120,7 +120,7 @@ class DataWrangling():
     def preProcess(self, test_size=0.1):
         X_data, Y_data = self.dataSplit()
         X_train, X_test, y_train, y_test = train_test_split(X_data, Y_data, test_size=test_size, shuffle=True)
-
+        X_train, X_test, y_train, y_test = torch.Tensor(X_train), torch.Tensor(X_train), torch.Tensor(y_train), torch.Tensor(y_test)
         train_dataset, test_dataset = [], []
         for i in range(len(y_train)):
             train_dataset.append([X_train[i], y_train[i]])
@@ -164,9 +164,13 @@ class LstmModel(nn.Module):
 
 
     def forward(self, x):
-        h0 = torch.randn(self.input_shape)
-        c0 = torch.randn(self.input_shape)
-        x = self.lstm(x, (h0, c0))
+        # h0 = torch.randn(self.input_shape)
+        # c0 = torch.randn(self.input_shape)
+        # x = self.lstm(x, (h0, c0))
+        h_0 = Variable(torch.randn(2, x.size(0), self.hidden_size))
+        c_0 = Variable(torch.randn(2, x.size(0), self.hidden_size))
+        x, (hn, cn) = self.lstm(x, (h_0, c_0))
+        # x = self.lstm(x)
         x = x[:, -1, :]
         x = self.relu(x)
         x = self.flatten(x)
@@ -212,6 +216,7 @@ def main():
     DataPipleline = DataWrangling(data_path=dataset_path, seq_lenght=hyper['input_shape'][1],
                                     batch_size=hyper['input_shape'][0])
     trainDataLoader, testDataLoader = DataPipleline.preProcess()
+    train(model=model, train_data=trainDataLoader, test_data=testDataLoader, opt=optimizer, loss_func=criterion, epochs=hyper['epochs'])
 
 
 
