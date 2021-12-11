@@ -141,7 +141,7 @@ class LstmModel(nn.Module):
         self.hidden_size = hidden_size
         self.fully_conn_size = fully_conn_size
         self.num_outputs = num_outputs
-        self.lstm = nn.LSTM(input_size=input_shape[-1], hidden_size=hidden_size, num_layers=2, dropout=0.1)
+        self.lstm = nn.LSTM(input_size=input_shape[-1], hidden_size=hidden_size, num_layers=2, dropout=0.1, batch_first=True)
         self.relu = nn.ReLU()
         self.flatten = nn.Flatten()
         # fc_size = seq_len*hidden_size
@@ -151,7 +151,17 @@ class LstmModel(nn.Module):
 
 
     def forward(self, x):
-        pass
+        h0 = torch.randn(self.input_shape)
+        c0 = torch.randn(self.input_shape)
+        x = self.lstm(x, (h0, c0))
+        x = x[:, -1, :]
+        x = self.relu(x)
+        x = self.flatten(x)
+        x = self.fc_1(x)
+        x = self.relu(x)
+        out = self.outlayer(x)
+
+        return out
 
 
 
@@ -159,13 +169,9 @@ class LstmModel(nn.Module):
 
 
 def main():
-    # DataPipleline = DataWrangling(data_path=data_path, sample_size=sample_size, batch_size=batch_size)
-    # trainDataLoader, testDataLoader = DataPipleline.preProcess()
-    lstm = nn.LSTM(input_size=3, hidden_size=10, batch_first=True, num_layers=2)
-    input_shape = torch.randn(100, 4, 3)
-    output, (h1, h2) = lstm(input_shape)
-    print(output.size())
-    print(f"h1 shape = {h1.size()}, h2 shape = {h2.size()}")
+    DataPipleline = DataWrangling(data_path=data_path, sample_size=sample_size, batch_size=batch_size)
+    trainDataLoader, testDataLoader = DataPipleline.preProcess()
+
 
 
 
