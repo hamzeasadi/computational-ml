@@ -39,13 +39,12 @@ def dirCreation(base_path, dirname):
 
 # define pathes
 base_path = os.path.join(os.path.dirname(os.getcwd()), 'data')
-paths = dict(
-dataset_path = os.path.join(base_path, 'leader100turn.csv'),
-checkpoint_name = f"checkpoint-lstm-model-{0}.pt",
-model_name = f"best-lstm-model-{0}.pt",
-checkpoint_path = os.path.join(base_path, 'checkpoint', checkpoint_name),
+dataset_path = os.path.join(base_path, 'leader100turn.csv')
+checkpoint_name = f"checkpoint-lstm-model-{0}.pt"
+model_name = f"best-lstm-model-{0}.pt"
+checkpoint_path = os.path.join(base_path, 'checkpoint', checkpoint_name)
 best_model_path = os.path.join(base_path, 'best_model', model_name)
-)
+
 
 # define hyper parameters
 # input_shape = (batch_size, seq_length, feature_size)
@@ -180,14 +179,18 @@ class LstmModel(nn.Module):
 model = LstmModel(input_shape=hyper['input_shape'], hidden_size=hyper['hidden_size'],
             fully_conn_size=hyper['fully_conn_size'], num_outputs=hyper['num_outputs'])
 
+# define criteria and optimizer
+criterion = nn.MSELoss()
+optimizer = torch.optim.Adam(params=model.parameters(), lr=hyper['learning_rate'])
 
 
 
 
 
 def main():
-    DataPipleline = DataWrangling(data_path=data_path, sample_size=sample_size, batch_size=batch_size)
-    trainDataLoader, testDataLoader = DataPipleline.preProcess()
+    # DataPipleline = DataWrangling(data_path=data_path, sample_size=sample_size, batch_size=batch_size)
+    # trainDataLoader, testDataLoader = DataPipleline.preProcess()
+    print(model)
 
 
 
