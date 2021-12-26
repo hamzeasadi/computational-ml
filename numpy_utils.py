@@ -13,11 +13,12 @@ def arrays(arr):
 
     return reversed_array
 
-
+def array_propreties(arr):
+    print(f"arr_dims={arr.ndim}, arr_size={arr.size()}, arr_shape={arr.shape()}")
 
 def main():
-    np_arr = np.empty(shape=(3, 3))
-    print(np_arr)
+    np_arr = np.empty(shape=(random.randint(1, 5), 3))
+    array_propreties(np_arr)
 
 
 
