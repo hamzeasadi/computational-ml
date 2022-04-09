@@ -6,6 +6,7 @@ from torch import functional as F
 from torch.utils.data import DataLoader
 from torchvision import datasets
 from torchvision.transforms import transforms
+import os
 
 
 # hypers params
@@ -15,6 +16,7 @@ input_dim = 784
 output_dim = 10
 epochs = 1
 lr = 1e-4
+data_path = os.path.join(os.pardir, 'data')
 
 
 class FCNN(nn.Module):
@@ -33,7 +35,14 @@ class FCNN(nn.Module):
 
 def main():
     model = FCNN(input_dim=input_dim, output_dim=output_dim).to(dev)
+
+    mytransforms = transforms.ToTensor()
     
+    train_dataset = datasets.MNIST(root=data_path, download=True, train=True, transform=mytransforms)
+    train_dataloader = DataLoader(dataset=train_dataset, shuffle=True, batch_size=batch_size)
+
+    test_dataset = datasets.MNIST(root=data_path, download=True, train=False, transform=mytransforms)
+    test_dataloader = DataLoader(dataset=test_dataset, batch_size=batch_size)
 
 
 if __name__ == '__main__':
