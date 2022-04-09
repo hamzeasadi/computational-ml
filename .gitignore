@@ -5,3 +5,4 @@ pytorch/data/
 pytorch/wandb/
 trajectory/myenv/
 myenv
+data/
