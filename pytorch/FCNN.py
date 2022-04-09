@@ -38,7 +38,7 @@ def train(model, train_data, test_data, opt, criterion, epochs, dev):
     for epoch in range(epochs):
         train_loss = 0
         for idx, (train_x, train_y) in enumerate(train_data):
-            X = train_x.to(dev).reshape((-1, 784))
+            X = train_x.to(dev).reshape((train_x.shape[0], -1))
             
             Y = train_y.to(dev)
             yhat = model(X)
@@ -47,9 +47,26 @@ def train(model, train_data, test_data, opt, criterion, epochs, dev):
             loss.backward()
             opt.step()
             train_loss += loss.item()
-            print(f"loss = {loss.item()}")
+            # print(f"loss = {loss.item()}")
 
         print(f"epoch={epoch} loss: {train_loss}")
+            
+
+def chk_acc(model, data, dev):
+    model.eval()
+    num_samples = 0
+    num_correct = 0
+    with torch.no_grad():
+        for idx, (test_x, test_y) in enumerate(data):
+            x = test_x.to(dev).reshape(test_x.shape[0], -1)
+            y = test_y.to(dev)
+            scores = model(x)
+            val, idx = torch.max(scores, dim=1)
+            num_correct += (idx==y).sum()
+            num_samples += x.shape[0]
+
+        print(f"accuracy = {num_correct/num_samples}")
+            
             
 
 
@@ -70,6 +87,7 @@ def main():
     optimizer = optim.Adam(model.parameters(), lr=lr)
 
     train(model=model, train_data=train_dataloader, test_data=test_dataloader, opt=optimizer, criterion=loss, dev=dev, epochs=epochs)
+    chk_acc(model=model, data=test_dataloader, dev=dev)
 
 
 
