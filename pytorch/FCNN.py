@@ -2,7 +2,7 @@ import torch
 from torch import nn as nn
 import numpy as np
 from torch import optim as optim
-from torch import functional as F 
+from torch.nn import functional as F 
 from torch.utils.data import DataLoader
 from torchvision import datasets
 from torchvision.transforms import transforms
@@ -27,10 +27,32 @@ class FCNN(nn.Module):
         self.out = nn.Linear(in_features=int(input_dim/10), out_features=output_dim)
 
     def forward(self, x):
-        x = F.relu(self.fc1)
+        x = F.relu(self.fc1(x))
         out = self.out(x)
 
         return out
+
+
+def train(model, train_data, test_data, opt, criterion, epochs, dev):
+    
+    for epoch in range(epochs):
+        train_loss = 0
+        for idx, (train_x, train_y) in enumerate(train_data):
+            X = train_x.to(dev).reshape((-1, 784))
+            
+            Y = train_y.to(dev)
+            yhat = model(X)
+            loss = criterion(yhat, Y)
+            opt.zero_grad()
+            loss.backward()
+            opt.step()
+            train_loss += loss.item()
+            print(f"loss = {loss.item()}")
+
+        print(f"epoch={epoch} loss: {train_loss}")
+            
+
+
 
 
 def main():
@@ -43,6 +65,13 @@ def main():
 
     test_dataset = datasets.MNIST(root=data_path, download=True, train=False, transform=mytransforms)
     test_dataloader = DataLoader(dataset=test_dataset, batch_size=batch_size)
+
+    loss = nn.CrossEntropyLoss()
+    optimizer = optim.Adam(model.parameters(), lr=lr)
+
+    train(model=model, train_data=train_dataloader, test_data=test_dataloader, opt=optimizer, criterion=loss, dev=dev, epochs=epochs)
+
+
 
 
 if __name__ == '__main__':
