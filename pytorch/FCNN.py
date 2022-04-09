@@ -38,7 +38,7 @@ def train(model, train_data, test_data, opt, criterion, epochs, dev):
     for epoch in range(epochs):
         train_loss = 0
         for idx, (train_x, train_y) in enumerate(train_data):
-            X = train_x.to(dev).reshape((-1, 784))
+            X = train_x.to(dev).reshape((train_x.shape[0], -1))
             
             Y = train_y.to(dev)
             yhat = model(X)
